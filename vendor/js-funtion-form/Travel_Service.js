@@ -65,7 +65,7 @@ $("#payment-button").click(function () {
 
 
 // loadAll Details
-function formatDate(dateString) {
+function formatDate1(dateString) {
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
     const date = new Date(dateString);
     return date.toLocaleDateString(undefined, options);
@@ -84,8 +84,8 @@ $(document).ready(function() {
                     // Create a new row for each item
                     const row = $("<tr>");
                     row.append($("<td>").text(item.packageID));
-                    row.append($("<td>").text(formatDate(item.startDate))); // Format the start date
-                    row.append($("<td>").text(formatDate(item.endDate)));   // Format the end date
+                    row.append($("<td>").text(formatDate1(item.startDate))); // Format the start date
+                    row.append($("<td>").text(formatDate1(item.endDate)));   // Format the end date
                     row.append($("<td>").text(item.travelArea));
                     row.append($("<td>").text(item.hotelFee));
                     row.append($("<td>").text(item.vehicleFee));
@@ -107,3 +107,139 @@ $(document).ready(function() {
         }
     });
 });
+
+
+// set values then click table row
+$(document).ready(function () {
+    // Add click event listener to table rows
+    $("table").on("click", "tr", function () {
+        var category = $("#package-category");
+        var startDate = $("#Start_Date");
+        var endDate = $("#End_Date");
+        var travelArea = $("#Travel_Area");
+        var noOfAdults = $("#No-of-adults");
+        var noOfChildren = $("#No-of-children");
+        var totalHeadcount = $("#Total_headcount");
+        var withPets = $("#withPets"); // Update with the correct ID
+        var needGuide = $("#needGuide"); // Update with the correct ID
+        var hotelFee = $("#Hotel-Fee");
+        var vehicleFee = $("#Vehicle-Fee");
+        var serviceCharge = $("#Service-Charge");
+        var userId = $("#user-ids");
+        var totalAmount = $("#Amount");
+
+        // Set the text content of the respective elements
+        category.val($(this).find("td:eq(1)").text());
+
+        // Convert the date values to 'yyyy-MM-dd' format
+        var originalStartDate = $(this).find("td:eq(2)").text();
+        var originalEndDate = $(this).find("td:eq(3)").text();
+        startDate.val(formatDate(originalStartDate));
+        endDate.val(formatDate(originalEndDate));
+
+        // Set the value of the Travel_Area dropdown if it exists in the options
+        var selectedTravelArea = $(this).find("td:eq(4)").text();
+        if (isOptionExists(travelArea, selectedTravelArea)) {
+            travelArea.val(selectedTravelArea);
+        }
+
+        // Rest of the code remains the same
+        noOfAdults.val($(this).find("td:eq(5)").text());
+        noOfChildren.val($(this).find("td:eq(6)").text());
+        totalHeadcount.val($(this).find("td:eq(7)").text());
+        withPets.prop('checked', $(this).find("td:eq(8)").text() === "true");
+        needGuide.prop('checked', $(this).find("td:eq(9)").text() === "true");
+        hotelFee.val($(this).find("td:eq(10)").text());
+        vehicleFee.val($(this).find("td:eq(11)").text());
+        serviceCharge.val($(this).find("td:eq(12)").text());
+        userId.val($(this).find("td:eq(13)").text());
+        totalAmount.val($(this).find("td:eq(14)").text());
+    });
+
+    // Function to check if an option exists in a dropdown
+    function isOptionExists(selectElement, value) {
+        return selectElement.find("option").filter(function () {
+            return $(this).text() === value;
+        }).length > 0;
+    }
+
+    // Function to convert date to 'yyyy-MM-dd' format
+    function formatDate(originalDate) {
+        var dateParts = originalDate.split(" ");
+        if (dateParts.length === 2) {
+            // Convert to 'yyyy-MM-dd' format
+            var months = {
+                "January": "01",
+                "February": "02",
+                "March": "03",
+                "April": "04",
+                "May": "05",
+                "June": "06",
+                "July": "07",
+                "August": "08",
+                "September": "09",
+                "October": "10",
+                "November": "11",
+                "December": "12"
+            };
+            var month = months[dateParts[0]];
+            var day = dateParts[1];
+            var year = dateParts[2];
+            return year + "-" + month + "-" + day;
+        }
+        return originalDate; // Return as is if the date format is not as expected
+    }
+});
+
+
+// search user
+//
+// $(document).ready(function () {
+//     // Add click event listener to table rows
+//     $("table").on("click", "tr", function () {
+//         // ...
+//     });
+//
+//     // Function to check if an option exists in a dropdown
+//     function isOptionExists(selectElement, value) {
+//         return selectElement.find("option").filter(function () {
+//             return $(this).text() === value;
+//         }).length > 0;
+//     }
+//
+//     // Handle user selection and data retrieval
+//     $("#user-ids").change(function () {
+//         var selectedUserId = $("#user-ids option:selected").text();
+//
+//         // Make an AJAX request to retrieve user-specific data
+//         $.ajax({
+//             url: "http://localhost:8081/api/v1/customer/findByUserID", // Replace with your actual data endpoint
+//             method: "GET",
+//             data: { userId: selectedUserId },
+//             success: function (data) {
+//                 // Update the table with the user-specific data
+//                 updateTableWithData(data);
+//             },
+//             error: function () {
+//                 alert("Failed to retrieve user data. Please try again.");
+//             }
+//         });
+//     });
+//
+//     // Function to update the table with user-specific data
+//     function updateTableWithData(data) {
+//         // Clear the table body
+//         $("#table-body").empty();
+//
+//         // Loop through the data and append rows to the table
+//         $.each(data, function (index, item) {
+//             var newRow = "<tr>" +
+//                 "<td>" + item.category + "</td>" +
+//                 "<td>" + item.startDate + "</td>" +
+//                 "<td>" + item.endDate + "</td>" +
+//                 // Add other table columns here
+//                 "</tr>";
+//             $("#table-body").append(newRow);
+//         });
+//     }
+// });
