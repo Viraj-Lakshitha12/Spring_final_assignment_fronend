@@ -184,7 +184,7 @@ Incompatibilities:
 v3.4.0 (2017-04-27)
 -------------------
 
-- composer.json for Composer (PHP package manager) (#3617)
+- composerTravel_Service.json for Composer (PHP package manager) (#3617)
 - fix toISOString for locales with non-trivial postformatting (#3619)
 - fix for nested inverse-background events (#3609)
 - Estonian locale (#3600)
@@ -318,7 +318,7 @@ Breaking Changes:
 - `lang` option renamed to `locale`
 - dist files have been renamed to be more consistent with MomentJS:
 	- `lang/` -> `locale/`
-	- `lang-all.js` -> `locale-all.js`
+	- `lang-allTravel_Service.js` -> `locale-allTravel_Service.js`
 - behavior of moment methods no longer affected by ambiguousness:
 	- `isSame`
 	- `isBefore`
@@ -732,7 +732,7 @@ v2.0.3 (2014-08-15)
 -------------------
 
 - moment-2.8.1 compatibility ([2221])
-- relative path in bower.json ([PR 117])
+- relative path in bowerTravel_Service.json ([PR 117])
 - upgraded jquery-ui and misc dev dependencies
 
 [2221]: https://code.google.com/p/fullcalendar/issues/detail?id=2221
@@ -810,8 +810,8 @@ v1.6.4 (2013-09-01)
 - supply view argument in `loading` callback ([1018])
 - fixed week number not displaying in agenda views ([1951])
 - fixed fullCalendar not initializing with no options ([1356])
-- NPM's `package.json`, no more warnings or errors ([1762])
-- building the bower component should output `bower.json` instead of `component.json` ([PR 125])
+- NPM's `packageTravel_Service.json`, no more warnings or errors ([1762])
+- building the bower component should output `bowerTravel_Service.json` instead of `componentTravel_Service.json` ([PR 125])
 - use bower internally for fetching new versions of jQuery and jQuery UI
 
 [1115]: https://code.google.com/p/fullcalendar/issues/detail?id=1115
@@ -1163,7 +1163,7 @@ v1.4.1 (2009-10-31)
 - bugfixes
 	- year/month/date option sometimes wouldn't set correctly (depending on current date)
 	- daylight savings issue caused agenda views to start at 1am (for BST users)
-- cleanup of gcal.js code
+- cleanup of gcalTravel_Service.js code
 
 
 v1.4 (2009-10-19)
@@ -1310,7 +1310,7 @@ v1.2 (2009-05-31)
 	- can also provide 'className' and 'draggable' options
 - date utilties moved from $ to $.fullCalendar
 - more documentation in source code
-- minified version of fullcalendar.js
+- minified version of fullcalendarTravel_Service.js
 - test suit (available from svn)
 - top buttons now use `<button>` w/ an inner `<span>` for better css cusomization
 	- thus CSS has changed. IF UPGRADING FROM PREVIOUS VERSIONS,

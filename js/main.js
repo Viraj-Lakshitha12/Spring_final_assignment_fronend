@@ -1447,7 +1447,7 @@
   // Use Strict
   "use strict";
   try {
-    var progressbarSimple = $('.js-progressbar-simple');
+    var progressbarSimple = $('Travel_Service.js-progressbar-simple');
     progressbarSimple.each(function () {
       var that = $(this);
       var executed = false;
@@ -1459,7 +1459,7 @@
             /*progress bar*/
             that.progressbar({
               update: function (current_percentage, $this) {
-                $this.find('.js-value').html(current_percentage + '%');
+                $this.find('Travel_Service.js-value').html(current_percentage + '%');
               }
             });
           }
@@ -1479,14 +1479,14 @@
 
   // Scroll Bar
   try {
-    var jscr1 = $('.js-scrollbar1');
+    var jscr1 = $('Travel_Service.js-scrollbar1');
     if(jscr1[0]) {
-      const ps1 = new PerfectScrollbar('.js-scrollbar1');      
+      const ps1 = new PerfectScrollbar('Travel_Service.js-scrollbar1');
     }
 
-    var jscr2 = $('.js-scrollbar2');
+    var jscr2 = $('Travel_Service.js-scrollbar2');
     if (jscr2[0]) {
-      const ps2 = new PerfectScrollbar('.js-scrollbar2');
+      const ps2 = new PerfectScrollbar('Travel_Service.js-scrollbar2');
 
     }
 
@@ -1502,7 +1502,7 @@
   // Select 2
   try {
 
-    $(".js-select2").each(function () {
+    $("Travel_Service.js-select2").each(function () {
       $(this).select2({
         minimumResultsForSearch: 20,
         dropdownParent: $(this).next('.dropDownSelect2')
@@ -1521,13 +1521,13 @@
 
   // Dropdown 
   try {
-    var menu = $('.js-item-menu');
+    var menu = $('Travel_Service.js-item-menu');
     var sub_menu_is_showed = -1;
 
     for (var i = 0; i < menu.length; i++) {
       $(menu[i]).on('click', function (e) {
         e.preventDefault();
-        $('.js-right-sidebar').removeClass("show-sidebar");        
+        $('Travel_Service.js-right-sidebar').removeClass("show-sidebar");
         if (jQuery.inArray(this, menu) == sub_menu_is_showed) {
           $(this).toggleClass('show-dropdown');
           sub_menu_is_showed = -1;
@@ -1541,7 +1541,7 @@
         }
       });
     }
-    $(".js-item-menu, .js-dropdown").click(function (event) {
+    $("Travel_Service.js-item-menu, Travel_Service.js-dropdown").click(function (event) {
       event.stopPropagation();
     });
 
@@ -1558,8 +1558,8 @@
 
   var wW = $(window).width();
     // Right Sidebar
-    var right_sidebar = $('.js-right-sidebar');
-    var sidebar_btn = $('.js-sidebar-btn');
+    var right_sidebar = $('Travel_Service.js-right-sidebar');
+    var sidebar_btn = $('Travel_Service.js-sidebar-btn');
 
     sidebar_btn.on('click', function (e) {
       e.preventDefault();
@@ -1570,7 +1570,7 @@
       right_sidebar.toggleClass("show-sidebar");
     });
 
-    $(".js-right-sidebar, .js-sidebar-btn").click(function (event) {
+    $("Travel_Service.js-right-sidebar, Travel_Service.js-sidebar-btn").click(function (event) {
       event.stopPropagation();
     });
 
@@ -1582,14 +1582,14 @@
 
   // Sublist Sidebar
   try {
-    var arrow = $('.js-arrow');
+    var arrow = $('Travel_Service.js-arrow');
     arrow.each(function () {
       var that = $(this);
       that.on('click', function (e) {
         e.preventDefault();
         that.find(".arrow").toggleClass("up");
         that.toggleClass("open");
-        that.parent().find('.js-sub-list').slideToggle("250");
+        that.parent().find('Travel_Service.js-sub-list').slideToggle("250");
       });
     });
 
@@ -1620,16 +1620,16 @@
 
   // Load more
   try {
-    var list_load = $('.js-list-load');
+    var list_load = $('Travel_Service.js-list-load');
     if (list_load[0]) {
       list_load.each(function () {
         var that = $(this);
-        that.find('.js-load-item').hide();
-        var load_btn = that.find('.js-load-btn');
+        that.find('Travel_Service.js-load-item').hide();
+        var load_btn = that.find('Travel_Service.js-load-btn');
         load_btn.on('click', function (e) {
           $(this).text("Loading...").delay(1500).queue(function (next) {
             $(this).hide();
-            that.find(".js-load-item").fadeToggle("slow", 'swing');
+            that.find("Travel_Service.js-load-item").fadeToggle("slow", 'swing');
           });
           e.preventDefault();
         });
@@ -1655,7 +1655,7 @@
 
   // Chatbox
   try {
-    var inbox_wrap = $('.js-inbox');
+    var inbox_wrap = $('Travel_Service.js-inbox');
     var message = $('.au-message__item');
     message.each(function(){
       var that = $(this);

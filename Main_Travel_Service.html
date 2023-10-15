@@ -2,401 +2,181 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
+  <!-- Required meta tags-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Title Page-->
-    <title>Dashboard 2</title>
+  <!-- Fontfaces CSS-->
+  <link href="css/font-face.css" rel="stylesheet" media="all">
+  <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+  <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+  <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
-    <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+  <!-- Bootstrap CSS-->
+  <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
-    <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+  <!-- Title Page-->
+  <title>Main Travel Service</title>
 
-    <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-    <link href="vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
 
 </head>
+<body>
 
-<body class="animsition">
-    <div class="page-wrapper">
-        <!-- MENU SIDEBAR-->
-        <aside class="menu-sidebar2">
-            <div class="logo">
-                <a href="#">
-                    <h3>Travel Service</h3>
-                </a>
+<div class="container">
+  <div class="row">
+    <!-- First Card: Main Details -->
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <strong>MAIN DETAILS</strong>
+        </div>
+        <div class="card-body card-block">
+          <div class="form-group">
+            <label class=" form-control-label">Package Id : </label>
+          </div>
+
+          <div class="row form-group">
+            <div class="col col-md-3">
+              <label for="package-category" class="form-control-label">Category:</label>
             </div>
-            <div class="menu-sidebar2__content js-scrollbar1">
-                <div class="account2">
-                    <div class="image img-cir img-120">
-                        <img src="images/icon/avatar-big-01.jpg" alt="John Doe" />
-                    </div>
-                    <h4 class="name">Travel Admin</h4>
-                    <a href="#">Sign out</a>
-                </div>
-                <nav class="navbar-sidebar2">
-                    <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.html">
-                                        <i class="fas fa-tachometer-alt"></i>Main Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="Main_Travel_Service.html">
-                                        <i class="fas fa-tachometer-alt"></i>Travel Service</a>
-                                </li>
-                                <li>
-                                    <a href="User_Service.html">
-                                        <i class="fas fa-tachometer-alt"></i>User Service </a>
-                                </li>
-                                <li>
-                                    <a href="Guide_Service.html">
-                                        <i class="fas fa-tachometer-alt"></i>Guide Service</a>
-                                </li>
-                                <li>
-                                    <a href="Hotel_Service.html">
-                                        <i class="fas fa-tachometer-alt"></i>Hotel Service </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="login.html">
-                                        <i class="fas fa-sign-in-alt"></i>Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">
-                                        <i class="fas fa-user"></i>Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">
-                                        <i class="fas fa-unlock-alt"></i>Forget Password</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                </nav>
+            <div class="col-12 col-md-9">
+              <select name="package-category" id="package-category" class="form-control">
+                <option value="1">Regular</option>
+                <option value="2">Mid level</option>
+                <option value="3">Luxury</option>
+                <option value="4">Super Luxury</option>
+              </select>
             </div>
-        </aside>
-        <!-- END MENU SIDEBAR-->
-
-        <!-- PAGE CONTAINER-->
-        <div class="page-container2">
-            <!-- HEADER DESKTOP-->
-            <header class="header-desktop2">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="header-wrap2">
-                            <div class="logo d-block d-lg-none">
-                                <a href="#">
-                                    <img src="images/icon/logo-white.png" alt="CoolAdmin" />
-                                </a>
-                            </div>
-                            <div class="header-button2">
-                                <div class="header-button-item js-item-menu">
-                                    <i class="zmdi zmdi-search"></i>
-                                    <div class="search-dropdown js-dropdown">
-                                        <form action="">
-                                            <input class="au-input au-input--full au-input--h65" type="text" placeholder="Search for datas &amp; reports..." />
-                                            <span class="search-dropdown__icon">
-                                                <i class="zmdi zmdi-search"></i>
-                                            </span>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="header-button-item has-noti js-item-menu">
-                                    <i class="zmdi zmdi-notifications"></i>
-                                    <div class="notifi-dropdown js-dropdown">
-                                        <div class="notifi__title">
-                                            <p>You have 3 Notifications</p>
-                                        </div>
-                                        <div class="notifi__item">
-                                            <div class="bg-c1 img-cir img-40">
-                                                <i class="zmdi zmdi-email-open"></i>
-                                            </div>
-                                            <div class="content">
-                                                <p>You got a email notification</p>
-                                                <span class="date">April 12, 2018 06:50</span>
-                                            </div>
-                                        </div>
-                                        <div class="notifi__item">
-                                            <div class="bg-c2 img-cir img-40">
-                                                <i class="zmdi zmdi-account-box"></i>
-                                            </div>
-                                            <div class="content">
-                                                <p>Your account has been blocked</p>
-                                                <span class="date">April 12, 2018 06:50</span>
-                                            </div>
-                                        </div>
-                                        <div class="notifi__item">
-                                            <div class="bg-c3 img-cir img-40">
-                                                <i class="zmdi zmdi-file-text"></i>
-                                            </div>
-                                            <div class="content">
-                                                <p>You got a new file</p>
-                                                <span class="date">April 12, 2018 06:50</span>
-                                            </div>
-                                        </div>
-                                        <div class="notifi__footer">
-                                            <a href="#">All notifications</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="header-button-item mr-0 js-sidebar-btn">
-                                    <i class="zmdi zmdi-menu"></i>
-                                </div>
-                                <div class="setting-menu js-right-sidebar d-none d-lg-block">
-                                    <div class="account-dropdown__body">
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Account</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                        </div>
-                                    </div>
-                                    <div class="account-dropdown__body">
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-globe"></i>Language</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-pin"></i>Location</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-email"></i>Email</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-notifications"></i>Notifications</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <br><br><br><br>
+          </div>
 
 
-            <div class="container">
-                <div class="row">
-                    <!-- First Card: Main Details -->
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>MAIN DETAILS</strong>
-                            </div>
-                            <div class="card-body card-block">
-                                <div class="form-group">
-                                    <label class=" form-control-label">Package Id : </label>
-                                </div>
+          <div class="form-group">
+            <label for="Start_Date" class=" form-control-label">Start Date</label>
+            <input type=date id="Start_Date" placeholder="DE1234567890" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="End_Date" class=" form-control-label">End Date</label>
+            <input type=date id="End_Date" placeholder="DE1234567890" class="form-control">
+          </div>
 
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="package-category" class=" form-control-label"> Category : </label>
-                                    </div>
-                                    <br>
-                                    <div class="col-12 col-md-9">
-                                        <select name="select" id="package-category" class="form-control">
-                                            <option value="1">Regular </option>
-                                            <option value="2">Mid level </option>
-                                            <option value="3">Luxury </option>
-                                            <option value="3">Super Luxury </option>
-                                        </select>
-                                    </div>
-                                </div>
+          <div class="col col-md-3" id="Travel_Area_div">
+            <label for="Travel_Area" class=" form-control-label">Travel_Area</label>
+          </div>
+          <div class="col-12 col-md-9">
+            <select name="select" id="Travel_Area" class="form-control">
+              <option value="0">• Kandy and Upcountry</option>
+              <option value="1">• Eastern Coast </option>
+              <option value="2">• Capital Colombo </option>
+              <option value="3">• Western Coast </option>
+              <option value="3">• North Peninsula </option>
+              <option value="3">• Down South </option>
+              <option value="3">• Sigiriya and Dambulla </option>
+              <option value="3">• Anuradhapura and Polonnaruwa</option>
+              <option value="3">• Matale </option>
+            </select>
+            <br>
+          </div>
 
-                                <div class="form-group">
-                                    <label for="Start_Date" class=" form-control-label">Start Date</label>
-                                    <input type=date id="Start_Date" placeholder="DE1234567890" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="End_Date" class=" form-control-label">End Date</label>
-                                    <input type=date id="End_Date" placeholder="DE1234567890" class="form-control">
-                                </div>
+          <div class="form-group">
+            <label for="No-of-adults" class="form-control-label">No of adults (age more than 18)</label>
+            <input type="text" id="No-of-adults" placeholder="ex - 1 , 2" class="form-control">
+          </div>
 
-                                <div class="col col-md-3" id="Travel_Area_div">
-                                    <label for="Travel_Area" class=" form-control-label">Travel_Area</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <select name="select" id="Travel_Area" class="form-control">
-                                        <option value="0">• Kandy and Upcountry</option>
-                                        <option value="1">• Eastern Coast </option>
-                                        <option value="2">• Capital Colombo </option>
-                                        <option value="3">• Western Coast </option>
-                                        <option value="3">• North Peninsula </option>
-                                        <option value="3">• Down South </option>
-                                        <option value="3">• Sigiriya and Dambulla </option>
-                                        <option value="3">• Anuradhapura and Polonnaruwa</option>
-                                        <option value="3">• Matale </option>
-                                    </select>
-                                    <br>
-                                </div>
+          <div class="form-group">
+            <label for="No-of-children" class=" form-control-label">children (age less than 18)</label>
+            <input type=text id="No-of-children" placeholder="ex - 1 , 2" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="Total_headcount" class=" form-control-label">Total headcount</label>
+            <input type=text id="Total_headcount" placeholder="ex - 1 , 2" class="form-control">
+          </div>
 
-                                <div class="form-group">
-                                    <label for="No-of-adults " class=" form-control-label">No of adults (age more than 18) </label>
-                                    <input type=text id="No-of-adults " placeholder="ex - 1 , 2" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="No-of-children" class=" form-control-label">children (age less than 18)</label>
-                                    <input type=text id="No-of-children" placeholder="ex - 1 , 2" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="Total_headcount" class=" form-control-label">Total headcount</label>
-                                    <input type=text id="Total_headcount" placeholder="ex - 1 , 2" class="form-control">
-                                </div>
+          <div class="radio" id="check-box-pet-div">
+            <label for="Pets-or-no" class="form-check-label ">
+              <input type="checkbox" id="Pets-or-no" name="radios" value="With Pets or no" class="form-check-input">With Pets or no
+            </label>
+          </div>
 
-                                <div class="radio" id="check-box-pet-div">
-                                    <label for="Pets-or-no" class="form-check-label ">
-                                        <input type="checkbox" id="Pets-or-no" name="radios" value="With Pets or no" class="form-check-input">With Pets or no
-                                    </label>
-                                </div>
-
-                                <div class="radio" id="check-box-guide-div">
-                                    <label for="need-guide-or-no" class="form-check-label ">
-                                        <input type="checkbox" id="need-guide-or-no" name="radios" value="With Pets or no" class="form-check-input">need-guide-or-no
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <!-- Second Card: Payment -->
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card">
-                                <div class="card-header"><strong>PAYMENT</strong></div>
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h3 class="text-center title-2">Pay Invoice</h3>
-                                    </div>
-                                    <hr>
-                                    <form action="" method="post" novalidate="novalidate">
-                                        <div class="form-group">
-                                            <label for="Hotel-Fee" class="control-label mb-1"> Hotel Fee</label>
-                                            <input id="Hotel-Fee" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Vehicle-Fee" class="control-label mb-1"> Vehicle Fee</label>
-                                            <input id="Vehicle-Fee" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Service-Charge" class="control-label mb-1">Service Charge</label>
-                                            <input id="Service-Charge" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col col-md-3">
-                                                <label for="user-ids" class=" form-control-label">USER ID  :</label>
-                                                <br>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <select name="select" id="user-ids" class="form-control">
-                                                    <option value="0">1</option>
-                                                    <option value="1">2</option>
-                                                    <option value="1">3</option>
-                                                </select>
-                                                <br>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Amount" class="control-label mb-1">Total Amount</label>
-                                            <input id="Amount" name="cc-payment" type="text" class="form-control" value="1500.00">
-                                        </div>
-                                        <div>
-                                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                                <i class="fa fa-lock fa-lg"></i>&nbsp;
-                                                <span id="payment-button-amount">Pay</span>
-                                                <span id="payment-button-sending" style="display:none;">Sending…</span>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <div class="radio" id="check-box-guide-div">
+            <label for="need-guide-or-no" class="form-check-label ">
+              <input type="checkbox" id="need-guide-or-no" name="radios" value="With Pets or no" class="form-check-input">need-guide-or-no
+            </label>
+          </div>
         </div>
 
-
+      </div>
     </div>
 
 
-    <script src="vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
-    </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
-    </script>
-    <script src="vendor/vector-map/jquery.vmap.js"></script>
-    <script src="vendor/vector-map/jquery.vmap.min.js"></script>
-    <script src="vendor/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="vendor/vector-map/jquery.vmap.world.js"></script>
-
-    <!-- Main JS-->
-    <script src="js/main.js"></script>
-
+    <!-- Second Card: Payment -->
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card">
+          <div class="card-header"><strong>PAYMENT</strong></div>
+          <div class="card-body">
+            <div class="card-title">
+              <h3 class="text-center title-2">Pay Invoice</h3>
+            </div>
+            <hr>
+            <form action="" method="post" novalidate="novalidate">
+              <div class="form-group">
+                <label for="Hotel-Fee" class="control-label mb-1"> Hotel Fee</label>
+                <input id="Hotel-Fee" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+              </div>
+              <div class="form-group">
+                <label for="Vehicle-Fee" class="control-label mb-1"> Vehicle Fee</label>
+                <input id="Vehicle-Fee" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+              </div>
+              <div class="form-group">
+                <label for="Service-Charge" class="control-label mb-1">Service Charge</label>
+                <input id="Service-Charge" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+              </div>
+              <div class="row">
+                <div class="col col-md-3">
+                  <label for="user-ids" class=" form-control-label">USER ID  :</label>
+                  <br>
+                </div>
+                <div class="col-12 col-md-9">
+                  <select name="select" id="user-ids" class="form-control">
+                    <option value="0">U001</option>
+                    <option value="1">U002</option>
+                    <option value="1">U003</option>
+                  </select>
+                  <br>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="Amount" class="control-label mb-1">Total Amount</label>
+                <input id="Amount" name="cc-payment" type="text" class="form-control" value="1500.00">
+              </div>
+              <div>
+                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                  <i class="fa fa-lock fa-lg"></i>&nbsp;
+                  <span id="payment-button-amount">Pay</span>
+                  <span id="payment-button-sending" style="display:none;">Sending…</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="vendor/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap JS-->
+<script src="vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<script src="vendor/js-funtion-form/Travel_Service.js"></script>
+<script>
+  $(document).ready(function() {
+    // Prevent the form from submitting and refresh the page
+    $("form").submit(function(event) {
+      event.preventDefault();
+      // Handle form submission asynchronously (e.g., using AJAX)
+      // You can place your AJAX code here to send the form data to the server
+    });
+  });
+</script>
 </body>
-
 </html>
-<!-- end document-->
