@@ -12,6 +12,7 @@
 
   <!-- Bootstrap CSS-->
   <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+  <link href="css/User_form.css" rel="stylesheet" media="all">
 </head>
 <body>
 
@@ -111,6 +112,34 @@
   <!-- Data rows will be added here using JavaScript -->
   </tbody>
 </table>
+
+<!-- Modal for editing user data -->
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editUserModalLabel">Edit User Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Form for editing user data -->
+        <form id="edit-user-form">
+          <div class="form-group">
+            <label for="edit-user-name">Name</label>
+            <input type="text" class="form-control" id="edit-user-name">
+          </div>
+          <!-- Add more input fields for editing user data as needed -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="update-user-button">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script src="vendor/jquery-3.2.1.min.js"></script>
