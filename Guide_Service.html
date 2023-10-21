@@ -12,6 +12,7 @@
     <!-- Bootstrap CSS-->
     <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
     <link href="css/User_form.css" rel="stylesheet" media="all">
+
 </head>
 <body>
 
@@ -103,8 +104,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="guide_experience" class="form-control-label">Guide Experience :</label>
-                        <textarea id="guide_experience" name="guide_experience" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
+                        <label for="Guide_experience" class="form-control-label">Guide Experience :</label>
+                        <textarea id="Guide_experience" name="Guide_experience" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -121,8 +122,144 @@
     </div>
 </div>
 
-<script src="vendor/jquery-3.2.1.min.js"></script>
+<!--table-->
+<table id="guideTable" class="table table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Contact Number</th>
+        <th>Man-Day Value</th>
+        <th>Guide Image</th>
+        <th>NIC Front Image</th>
+        <th>NIC Rear Image</th>
+        <th>Guide ID Front Image</th>
+        <th>Guide ID Rear Image</th>
+        <th>Experience</th>
+        <th>User Remarks</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+
+<!-- Edit Guide Modal -->
+
+<div class="modal fade" id="editGuideModal" tabindex="-1" role="dialog" aria-labelledby="editGuideModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editGuideModalLabel">Edit Guide</h5>
+                <button type="button" class="close" id="btnCloseModel1" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for editing guide details -->
+                <form id="editGuideForm">
+                    <!-- Guide ID (hidden field) -->
+                    <input type="hidden" id="editGuideId" name="guideId">
+
+                    <!-- Guide Name -->
+                    <div class="form-group">
+                        <label for="editGuideName">Name</label>
+                        <input type="text" class="form-control" id="editGuideName" name="guideName" placeholder="Enter Name">
+                    </div>
+
+                    <!-- Guide Address -->
+                    <div class="form-group">
+                        <label for="editGuideAddress">Address</label>
+                        <input type="text" class="form-control" id="editGuideAddress" name="guideAddress" placeholder="Enter Address">
+                    </div>
+
+                    <!-- Guide Age -->
+                    <div class="form-group">
+                        <label for="editGuideAge">Age</label>
+                        <input type="number" class="form-control" id="editGuideAge" name="guideAge" placeholder="Enter Age">
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <label for="editGender">Gender</label>
+                        <select class="form-control" id="editGender" name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Contact Number -->
+                    <div class="form-group">
+                        <label for="editContactNumber">Contact Number</label>
+                        <input type="tel" class="form-control" id="editContactNumber" name="contactNumber" placeholder="Enter Contact Number">
+                    </div>
+
+                    <!-- Man-Day Value -->
+                    <div class="form-group">
+                        <label for="editManDayValue">Man-Day Value</label>
+                        <input type="number" class="form-control" id="editManDayValue" name="manDayValue" placeholder="Enter Man-Day Value">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editGuide_image">Guide image :</label>
+                        <input type="file" id="editGuide_image" name="image" accept="image/*">
+                    </div>
+
+                    <!-- Additional Form 2 Fields -->
+                    <div class="form-group">
+                        <label for="Guide_Nic_font">NIC scanned image (Front view):</label>
+                        <input type="file" id="editGuide_Nic_font" name="Guide_Nic_font" accept="image/*">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Guide_Nic_Rear">NIC scanned image (Rear view):</label>
+                        <input type="file" id="editGuide_Nic_Rear" name="Guide_Nic_Rear" accept="image/*">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Guide_ID_font">Guide ID scanned image (Front view):</label>
+                        <input type="file" id="editGuide_ID_font" name="Guide_ID_font" accept="image/*">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Guide_ID_Rear">Guide ID scanned image (Rear view):</label>
+                        <input type="file" id="editGuide_ID_Rear" name="Guide_ID_Rear" accept="image/*">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editGuide_experience">Guide Experience:</label>
+                        <textarea id="editGuide_experience" name="Guide_experience" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editUser_remarks">Remarks (any special needs, illnesses, etc.):</label>
+                        <textarea id="editUser_remarks" name="User_remarks" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnCloseModel" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveGuideChanges">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Your JavaScript code (Guide_Form.js) -->
 <script src="vendor/js-funtion-form/Guide_Form.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
 <script>
     $(document).ready(function() {
         $("form").on("submit", function(event) {
