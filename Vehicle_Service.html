@@ -157,8 +157,7 @@
 </div>
 
 <!--table details-->
-
-<table class="table table-bordered">
+<table id="vehicleData">
   <thead>
   <tr>
     <th>Vehicle ID</th>
@@ -176,19 +175,155 @@
     <th>Front View</th>
     <th>Rear View</th>
     <th>Side View</th>
-    <th>Front Interior</th>
-    <th>Rear Interior</th>
+    <th>Front Interior View</th>
+    <th>Rear Interior View</th>
+    <th>View</th>
   </tr>
   </thead>
-  <tbody id="table-body">
-  <!-- Vehicle data rows will be dynamically added here using JavaScript -->
+  <tbody>
+  <!-- Data will be dynamically inserted here -->
   </tbody>
 </table>
 
 
 
+<!--model data-->
+
+<!-- Modal -->
+<div class="modal fade" id="vehicleModal" tabindex="-1" role="dialog" aria-labelledby="vehicleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="vehicleModalLabel">Vehicle Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="editVehicle_Id" class="form-control-label">Vehicle ID :</label>
+          <input type="text" id="editVehicle_Id" placeholder="123" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="editVehicle_brand" class="form-control-label">Vehicle brand :</label>
+          <input type="text" id="editVehicle_brand" placeholder="1234567890" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="editCategory">Category :</label>
+          <select id="editCategory" name="Category" class="form-control">
+            <option value="male">Economy</option>
+            <option value="female">Mid-Range</option>
+            <option value="other">Luxury</option>
+            <option value="other"> Super Luxury</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="editFuel_type">Fuel_type :</label>
+          <select id="editFuel_type" name="Fuel_type" class="form-control">
+            <option value="male">Diesel</option>
+            <option value="female">Petrol</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="editHybrid_or_Non-Hybrid">Hybrid or Non-Hybrid :</label>
+          <select id="editHybrid_or_Non-Hybrid" name="Hybrid_or_Non-Hybrid" class="form-control">
+            <option value="male">Hybrid</option>
+            <option value="female">Non-Hybrid</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="editFuel_usage" class="form-control-label">Fuel usage (km/l) :</label>
+          <input type="text" id="editFuel_usage" placeholder="123" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="editFront_view">Images of the vehicle (Front View)</label>
+          <input type="file" id="editFront_view" name="image" accept="image/*">
+        </div>
+
+        <div class="form-group">
+          <label for="editRear_View">Images of the vehicle (Rear View)</label>
+          <input type="file" id="editRear_View" name="image" accept="image/*">
+        </div>
+        <div class="form-group">
+          <label for="editSide_view">Images of the vehicle (Side view)</label>
+          <input type="file" id="editSide_view" name="image" accept="image/*">
+        </div>
+        <div class="form-group">
+          <label for="editFont_Interior">Images of the vehicle (Font Interior view)</label>
+          <input type="file" id="editFont_Interior" name="image" accept="image/*">
+        </div>
+
+        <div class="form-group">
+          <label for="editRear_Interior">Images of the vehicle (Rear Interior view)</label>
+          <input type="file" id="editRear_Interior" name="image" accept="image/*">
+        </div>
+        <div class="form-group">
+          <label for="editSeat_Capacity" class="form-control-label">Seat capacity (exclude driver) : </label>
+          <input type="text" id="editSeat_Capacity" placeholder="123" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="editVehicle_type">Vehicle type :</label>
+          <select id="editVehicle_type" name="Vehicle_type" class="form-control">
+            <option value="male">Car</option>
+            <option value="female">Van (7-12 seats)</option>
+            <option value="female">SUV</option>
+            <option value="female">Bus (30-40 seats)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="editTransmission_type">Transmission type :</label>
+          <select id="editTransmission_type" name="Transmission_type " class="form-control">
+            <option value="male">Auto</option>
+            <option value="female">Manual</option>
+          </select>
+        </div>
+
+
+        <div class="form-group">
+          <label for="editDriver_Name" class="form-control-label">Driver Name :</label>
+          <input type="text" id="editDriver_Name" placeholder="Kamal" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="editContact_No" class="form-control-label">Driver Contact No :</label>
+          <input type="text" id="editContact_No" placeholder="1234" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="editLicense_Font_Image"> Driver's license Scanned Image (Front side) : </label>
+          <input type="file" id="editLicense_Font_Image" name="image" accept="image/*">
+        </div>
+
+        <div class="form-group">
+          <label for="editLicense_Rear_Image">Driver's license Scanned Image (Rear side)</label>
+          <input type="file" id="editLicense_Rear_Image" name="image" accept="image/*">
+        </div>
+
+
+        <div class="form-group">
+          <label for="editUser_remarks" class="form-control-label">Remarks (any special needs, illnesses, etc.):</label>
+          <textarea id="editUser_remarks" name="remarks" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="updateData">Update Data</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script src="vendor/jquery-3.2.1.min.js"></script>
-<script src="vendor/js-funtion-form/Vehicle_Form.js"></script>
+<script src="js/js-funtion-form/Vehicle_Form.js"></script>
 
 <script>
   $(document).ready(function() {

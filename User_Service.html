@@ -14,13 +14,6 @@
   <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
   <link href="css/User_form.css" rel="stylesheet" media="all">
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
 </head>
 <body>
 
@@ -35,8 +28,8 @@
       <div class="card-body">
         <form>
           <div class="form-group">
-            <label for="User_Name" class="form-control-label">User ID:</label>
-            <input type="text" id="User_Name" placeholder="Kamal" class="form-control">
+            <label for="user_id" class="form-control-label">User ID:</label>
+            <input type="text" id="user_id" placeholder="Kamal" class="form-control">
           </div>
           <div class="form-group">
             <label for="User_Nic" class="form-control-label">User NIC / Passport No:</label>
@@ -101,6 +94,8 @@
     </div>
   </div>
 </div>
+
+
 <table class="table table-sm">
   <thead>
   <tr>
@@ -114,13 +109,17 @@
     <th scope="col">Remarks</th>
     <th scope="col">Front Side Image</th>
     <th scope="col">Back Side Image</th>
+    <th scope="col">Action</th>
   </tr>
   </thead>
   <tbody id="table-body">
   <!-- Data rows will be added here using JavaScript -->
   </tbody>
 </table>
+
+
 <!-- Modal for editing user data -->
+
 <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -134,29 +133,50 @@
         <!-- Form for editing user data -->
         <form id="edit-user-form">
           <div class="form-group">
-            <label for="edit-user-name" class="form-control-label">Name:</label>
-            <input type="text" class="form-control" id="edit-user-name">
+            <label for="editUser_id" class="form-control-label">User ID:</label>
+            <input type="text" id="editUser_id" placeholder="Kamal" class="form-control">
           </div>
           <div class="form-group">
-            <label for="edit-user-email" class="form-control-label">Email:</label>
-            <input type="text" class="form-control" id="edit-user-email">
+            <label for="editUser_Nic" class="form-control-label">User NIC / Passport No:</label>
+            <input type="text" id="editUser_Nic" placeholder="1234567890" class="form-control">
           </div>
           <div class="form-group">
-            <label for="edit-contact" class="form-control-label">Contact Number:</label>
-            <input type="tel" class="form-control" id="edit-contact" name="contact" pattern="[0-9]{10}" placeholder="10-digit phone number">
+            <label for="editImage-front-side">User NIC font side scanned images:</label>
+            <input type="file" id="editImage-front-side" name="image" accept="image/*">
           </div>
           <div class="form-group">
-            <label for="edit-user-age" class="form-control-label">User Age:</label>
-            <input type="text" class="form-control" id="edit-user-age">
+            <label for="editImage-back-side">User NIC back side scanned images:</label>
+            <input type="file" id="editImage-back-side" name="image" accept="image/*">
           </div>
           <div class="form-group">
-            <label for="edit-user-address" class="form-control-label">User Address:</label>
-            <input type="text" class="form-control" id="edit-user-address">
+            <label for="editGender">Gender:</label>
+            <select id="editGender" name="gender" class="form-control">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
           </div>
           <div class="form-group">
-            <label for="edit-user-remarks" class="form-control-label">Remarks (any special needs, illnesses, etc.):</label>
-            <textarea class="form-control" id="edit-user-remarks" name="remarks" rows="4" cols="50" placeholder="Enter your remarks here"></textarea>
+            <label for="editUser_email" class="form-control-label">User Email:</label>
+            <input type="email" id="editUser_email" placeholder="Kamal123@gmail.com" class="form-control">
           </div>
+          <div class="form-group">
+            <label for="editContact">Contact Number:</label>
+            <input type="tel" id="editContact" name="contact" pattern="[0-9]{10}" placeholder="10-digit phone number" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="editUser_Age" class="form-control-label">User Age:</label>
+            <input type="text" id="editUser_Age" placeholder="Kamal" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="editUser_address" class="form-control-label">User Address:</label>
+            <input type="text" id="editUser_address" placeholder="Colombo" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="editUser_remarks" class="form-control-label">Remarks (any special needs, illnesses, etc.):</label>
+            <textarea id="editUser_remarks" name="remarks" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
+          </div>
+
         </form>
       </div>
       <div class="modal-footer">
@@ -170,7 +190,7 @@
 
 
 <script src="vendor/jquery-3.2.1.min.js"></script>
-<script src="vendor/js-funtion-form/user_Form.js"></script>
+<script src="js/js-funtion-form/user_Form.js"></script>
 <!-- Bootstrap JS-->
 <script src="vendor/bootstrap-4.1/popper.min.js"></script>
 <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
