@@ -69,8 +69,8 @@ function loadData() {
 
             // Loop through the retrieved data and add it to the table
             response.forEach(function (vehicle) {
-                $("#vehicleData tbody").append(
-                    "<tr>" +
+                // Assuming this is inside a loop where you're iterating through your vehicle data
+                var rowHtml = "<tr>" +
                     "<td>" + vehicle.vehicleId + "</td>" +
                     "<td>" + vehicle.vehicleBrand + "</td>" +
                     "<td>" + vehicle.category + "</td>" +
@@ -90,9 +90,12 @@ function loadData() {
                     "<td><img src='data:image/png;base64," + vehicle.rearInteriorImage + "' width='100' height='100' alt='Rear Interior'></td>" +
                     "<td><img src='data:image/png;base64," + vehicle.licenseFrontImage + "' width='100' height='100' alt='License Front'></td>" +
                     "<td><img src='data:image/png;base64," + vehicle.licenseRearImage + "' width='100' height='100' alt='License Rear'></td>" +
-                    "<td> <button class='btn btn-info btn-sm view-button' data-vehicleId='" + vehicle.vehicleId + "'>View</button>\n</td>" +
-                    "</tr>"
-                );
+                    "<td><button class='btn btn-info btn-sm view-button' data-vehicleId='" + vehicle.vehicleId + "'>View</button></td>" +
+                    "</tr>";
+
+// Append the row to the table
+                $("#vehicleData tbody").append(rowHtml);
+
 
             });
         },
@@ -115,11 +118,9 @@ function loadData() {
 
 // update data
 
-
-var updateVehicleId = null;
 var jsonData = {}; // Define jsonData outside the functions.
 var originalImages = {}; // Store the original images
-
+var updateVehicleId = null;
 $(document).ready(function () {
     // Function to read image files as byte arrays
     function readImageFileAsByteArray(file, callback) {
@@ -134,12 +135,12 @@ $(document).ready(function () {
         }
     }
 
-    // Function to fetch guide details
-    function fetchGuideDetails(guideId) {
+    function fetchVehicleDetails(updateVehicleId) {
+        console.log("Fetching vehicle details for ID: " + updateVehicleId);
         $.ajax({
             type: "GET",
             url: "http://localhost:8084/api/v1/vehicle/getData/" + updateVehicleId,
-            success: function (vehicle) {
+            success: function (vehicle) { // Change 'guide' to 'vehicle'
                 // Store the original images
                 originalImages.frontViewImage = vehicle.frontViewImage;
                 originalImages.rearViewImage = vehicle.rearViewImage;
@@ -149,33 +150,33 @@ $(document).ready(function () {
                 originalImages.licenseFrontImage = vehicle.licenseFrontImage;
                 originalImages.licenseRearImage = vehicle.licenseRearImage;
 
-                // Populate the modal with guide details
+                // Populate the modal with vehicle details
                 $("#editVehicle_Id").val(vehicle.vehicleId);
-                $("#editGuideName").val(guide.guideName);
-                $("#editGuideAddress").val(guide.guideAddress);
-                $("#editGuideAge").val(guide.guideAge);
-                $("#editGender").val(guide.gender);
-                $("#editContactNumber").val(guide.contactNumber);
-                $("#editManDayValue").val(guide.manDayValue);
-                $("#editGuide_experience").val(guide.guideExperience);
-                $("#editUser_remarks").val(guide.userRemarks);
+                $("#editGuideName").val(vehicle.vehicleBrand); // Update guide to vehicle
+                $("#editGuideAddress").val(vehicle.category);
+                $("#editGuideAge").val(vehicle.fuelType);
+                $("#editGender").val(vehicle.hybridOrNonHybrid);
+                $("#editContactNumber").val(vehicle.fuelUsage);
+                $("#editManDayValue").val(vehicle.seatCapacity);
+                $("#editGuide_experience").val(vehicle.vehicleType);
+                $("#editUser_remarks").val(vehicle.transmissionType);
 
                 // Open the modal
                 $('#editGuideModal').modal('show');
             },
             error: function (error) {
-                console.error("Error fetching guide details: " + JSON.stringify(error));
+                console.error("Error fetching vehicle details: " + JSON.stringify(error));
             }
         });
     }
 
-    // Handle click event for the "View" button within the table
+// Handle click event for the "View" button within the table
     $(document).on("click", ".view-button", function () {
-        var vehicleId = $(this).data("vehicleId"); // Updated variable name
-        updateVehicleId = vehicleId; // Consistent variable name
-        console.log("updateVehicleId ID: " + updateVehicleId);
-        fetchGuideDetails(vehicleId); // Use the updated variable name
+        updateVehicleId = $(this).data("vehicleId");
+        fetchVehicleDetails(updateVehicleId);
     });
+
+
 
     // Event handler for the Save Changes button
     $("#saveGuideChanges").click(function () {
@@ -226,11 +227,10 @@ $(document).ready(function () {
         }
     }
 
-    // Function to send the data to the server
     function sendDataToServer() {
         $.ajax({
             type: "PUT",
-            url: "http://localhost:8084/api/v1/guide/updateGuide/" + updateId,
+            url: "http://localhost:8084/api/v1/vehicle/updateVehicle/" + updateVehicleId,
             data: JSON.stringify(jsonData),
             contentType: "application/json",
             success: function (response) {
