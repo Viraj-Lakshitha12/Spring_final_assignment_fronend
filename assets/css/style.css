@@ -388,7 +388,10 @@ body { background: var(--white); }
   padding-top: 125px;
 }
 
-.hero-title { margin-bottom: 20px; }
+.hero-title {
+  margin-bottom: 20px;
+  font-size: 55px;
+}
 
 .hero-text {
   color: var(--white);
@@ -432,11 +435,6 @@ body { background: var(--white); }
 }
 
 .tour-search-form .input-field::placeholder { color: var(--spanish-gray); }
-
-.tour-search-form .input-field::-webkit-datetime-edit {
-  color: var(--spanish-gray);
-  text-transform: uppercase;
-}
 
 .tour-search-form .input-wrapper { margin-bottom: 15px; }
 
@@ -1077,7 +1075,7 @@ address {
    * GALLERY
    */
 
-  .gallery { padding-bottom: calc(var(--section-padding * 2)); }
+  /*.gallery { padding-bottom: calc(var(--section-padding* 2)); }*/
 
   .gallery-list {
     grid-template-columns: repeat(3, 1fr);

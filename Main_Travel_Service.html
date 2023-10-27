@@ -133,18 +133,15 @@
               </div>
               <div class="row">
                 <div class="col col-md-3">
-                  <label for="user-ids" class=" form-control-label">USER ID  :</label>
-                  <br>
+                  <label for="user-ids" class="form-control-label">USER ID:</label>
                 </div>
                 <div class="col-12 col-md-9">
                   <select name="select" id="user-ids" class="form-control">
-                    <option value="0">U001</option>
-                    <option value="1">U002</option>
-                    <option value="1">U003</option>
+                    <option value="0"></option>
                   </select>
-                  <br>
                 </div>
               </div>
+
               <div class="form-group">
                 <label for="Amount" class="control-label mb-1">Total Amount</label>
                 <input id="Amount" name="cc-payment" type="text" class="form-control" value="1500.00">
@@ -164,26 +161,156 @@
   </div>
 </div>
 
-
-
 <table class="table table-sm">
   <thead>
   <tr>
     <th scope="col">ID</th>
+    <th scope="col">Category</th>
     <th scope="col">StartDate</th>
     <th scope="col">EndDate</th>
     <th scope="col">TravelArea</th>
+    <th scope="col">NoOfAdults</th>
+    <th scope="col">NoOfChildren</th>
+    <th scope="col">TotalHeadcount</th>
+    <th scope="col">WithPets</th>
+    <th scope="col">NeedGuide</th>
     <th scope="col">HotelFee</th>
     <th scope="col">VehicleFee</th>
     <th scope="col">ServiceCharge</th>
     <th scope="col">UserId</th>
     <th scope="col">TotalAmount</th>
+    <th scope="col">View</th>
   </tr>
   </thead>
   <tbody id="table-body">
   <!-- Data rows will be added here using JavaScript -->
   </tbody>
 </table>
+
+
+<!--travel service model-->
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">View/Edit Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body card-block">
+          <div class="form-group">
+            <label for="editPackage_id" class="form-control-label">Package Id : </label>
+            <input type=text id="editPackage_id" placeholder="DE1234567890" class="form-control">
+          </div>
+
+          <div class="row form-group">
+            <div class="col col-md-3">
+              <label for="editPackage-category" class="form-control-label">Category:</label>
+            </div>
+            <div class="col-12 col-md-9">
+              <select name="package-category" id="editPackage-category" class="form-control">
+                <option value="1">Regular</option>
+                <option value="2">Mid level</option>
+                <option value="3">Luxury</option>
+                <option value="4">Super Luxury</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="editStart_Date" class=" form-control-label">Start Date</label>
+            <input type=date id="editStart_Date" placeholder="DE1234567890" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="editEnd_Date" class=" form-control-label">End Date</label>
+            <input type=date id="editEnd_Date" placeholder="DE1234567890" class="form-control">
+          </div>
+
+          <div class="col col-md-3" id="editTravel_Area_div">
+            <label for="editTravel_Area" class=" form-control-label">Travel_Area</label>
+          </div>
+          <div class="col-12 col-md-9">
+            <select name="select" id="editTravel_Area" class="form-control">
+              <option value="0">• Kandy and Upcountry</option>
+              <option value="1">• Eastern Coast </option>
+              <option value="2">• Capital Colombo </option>
+              <option value="3">• Western Coast </option>
+              <option value="4">• North Peninsula </option>
+              <option value="5">• Down South </option>
+              <option value="6">• Sigiriya and Dambulla </option>
+              <option value="7">• Anuradhapura and Polonnaruwa</option>
+              <option value="8">• Matale </option>
+            </select>
+            <br>
+          </div>
+
+          <div class="form-group">
+            <label for="editNo-of-adults" class="form-control-label">No of adults (age more than 18)</label>
+            <input type="text" id="editNo-of-adults" placeholder="ex - 1 , 2" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="editNo-of-children" class=" form-control-label">children (age less than 18)</label>
+            <input type=text id="editNo-of-children" placeholder="ex - 1 , 2" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="editTotal_headcount" class=" form-control-label">Total headcount</label>
+            <input type=text id="editTotal_headcount" placeholder="ex - 1 , 2" class="form-control">
+          </div>
+
+          <div class="radio" id="check-box-pet-div1">
+            <label for="editPets-or-no" class="form-check-label ">
+              <input type="checkbox" id="editPets-or-no" name="radios" value="With Pets or no" class="form-check-input">With Pets or no
+            </label>
+          </div>
+
+          <div class="radio" id="check-box-guide-div1">
+            <label for="editNeed-guide-or-no" class="form-check-label ">
+              <input type="checkbox" id="editNeed-guide-or-no" name="radios" value="With Pets or no" class="form-check-input">need-guide-or-no
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="editHotel-Fee" class="control-label mb-1"> Hotel Fee</label>
+            <input id="editHotel-Fee" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+          </div>
+          <div class="form-group">
+            <label for="editVehicle-Fee" class="control-label mb-1"> Vehicle Fee</label>
+            <input id="editVehicle-Fee" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+          </div>
+          <div class="form-group">
+            <label for="editService-Charge" class="control-label mb-1">Service Charge</label>
+            <input id="editService-Charge" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
+          </div>
+          <div class="row">
+            <div class="col col-md-3">
+              <label for="editUser-ids" class=" form-control-label">USER ID  :</label>
+              <br>
+            </div>
+            <div class="col-12 col-md-9">
+              <select name="select" id="editUser-ids" class="form-control">
+                <option value="0">U001</option>
+                <option value="1">U002</option>
+                <option value="1">U003</option>
+              </select>
+              <br>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="editAmount" class="control-label mb-1">Total Amount</label>
+            <input id="editAmount" name="editAmount-payment" type="text" class="form-control" value="1500.00">
+          </div>
+
+
+
+        <button id="editButton" class="btn btn-primary">Edit</button>
+        <button id="deleteButton" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script src="vendor/jquery-3.2.1.min.js"></script>

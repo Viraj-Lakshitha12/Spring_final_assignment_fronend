@@ -63,183 +63,194 @@ $("#payment-button").click(function () {
     });
 });
 
+// Function to format the date to 'YYYY-MM-DD' format
+function formatDate(dateString) {
+    if (!dateString) return '';
 
-// loadAll Details
-function formatDate1(dateString) {
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
     const date = new Date(dateString);
-    return date.toLocaleDateString(undefined, options);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
 }
 
-$(document).ready(function() {
-    // Make an AJAX request to get all details from your Spring Boot endpoint
+// Function to load data into the table
+function loadData() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8081/api/v1/customer/getAllData", // Replace with your endpoint URL
-        success: function (data) {
-            const tableBody = $("#table-body");
-
-            if (Array.isArray(data)) {
-                data.forEach(function(item) {
-                    // Create a new row for each item
-                    const row = $("<tr>");
-                    row.append($("<td>").text(item.packageID));
-                    row.append($("<td>").text(formatDate1(item.startDate))); // Format the start date
-                    row.append($("<td>").text(formatDate1(item.endDate)));   // Format the end date
-                    row.append($("<td>").text(item.travelArea));
-                    row.append($("<td>").text(item.hotelFee));
-                    row.append($("<td>").text(item.vehicleFee));
-                    row.append($("<td>").text(item.serviceCharge));
-                    row.append($("<td>").text(item.userId));
-                    row.append($("<td>").text(item.totalAmount));
-
-                    tableBody.append(row);
+        url: "http://localhost:8081/api/v1/customer/getAllData",
+        success: function (response) {
+            if (Array.isArray(response) && response.length > 0) {
+                // Clear the existing table rows
+                $("#table-body").empty();
+                // Loop through the retrieved data and add it to the table
+                response.forEach(function (item) {
+                    $("#table-body").append(
+                        `<tr>
+                            <td>${item.packageID}</td>
+                            <td>${item.category}</td>
+                            <td>${formatDate(item.startDate)}</td>
+                            <td>${formatDate(item.endDate)}</td>
+                            <td>${item.travelArea}</td>
+                            <td>${item.noOfAdults}</td>
+                            <td>${item.noOfChildren}</td>
+                            <td>${item.totalHeadcount}</td>
+                            <td>${item.withPets}</td>
+                            <td>${item.needGuide}</td>
+                            <td>${item.hotelFee}</td>
+                            <td>${item.vehicleFee}</td>
+                            <td>${item.serviceCharge}</td>
+                            <td>${item.userId}</td>
+                            <td>${item.totalAmount}</td>
+                            <td>
+                                <button class='btn btn-info btn-sm view-button' data-id='${item.id}'>View</button>
+                            </td>
+                        </tr>`
+                    );
                 });
             } else {
-                // Display an error message if the data is not in the expected array format
-                tableBody.append('<tr><td colspan="9">Data is not in the expected format.</td></tr>');
+                console.error("Data received from the server is not in the expected format or is empty.");
             }
         },
         error: function (error) {
-            // Display an error message if the AJAX request fails
-            tableBody.append('<tr><td colspan="9">Error loading data. Please try again later.</td></tr>');
-            console.error("Error loading data: " + JSON.stringify(error));
+            console.error("Error fetching data:", error);
         }
+    });
+}
+
+// Initial data load when the page loads
+loadData();
+
+
+
+
+// update data
+$(document).on("click", ".view-button", function () {
+    // Assuming "item" contains the data from the clicked row
+    var item = getRowDataFromTable($(this));
+
+    // Populate the modal fields with the data
+    $("#editPackage_id").val(item.packageID);
+    $("#editPackage-category").val(item.category);
+    $("#editStart_Date").val(item.startDate);
+    $("#editEnd_Date").val(item.endDate);
+    $("#editTravel_Area").val(item.travelArea);
+    $("#editNo-of-adults").val(item.noOfAdults);
+    $("#editNo-of-children").val(item.noOfChildren);
+    $("#editTotal_headcount").val(item.totalHeadcount);
+    // Set the checkbox based on the value
+    $("#editPets-or-no").prop("checked", item.withPets);
+    // Set the checkbox based on the value
+    $("#editNeed-guide-or-no").prop("checked", item.needGuide);
+    $("#editHotel-Fee").val(item.hotelFee);
+    $("#editVehicle-Fee").val(item.vehicleFee);
+    $("#editService-Charge").val(item.serviceCharge);
+    $("#editUser-ids").val(item.userId);
+    $("#editAmount").val(item.totalAmount);
+
+    // Show the modal
+    $("#myModal").modal("show");
+});
+
+function getRowDataFromTable(button) {
+    // Assuming the data is in the same row as the clicked button
+    var row = $(button).closest("tr");
+    var rowData = {
+        packageID: row.find("td:eq(0)").text(),
+        category: row.find("td:eq(1)").text(), // Use .text() for text-based values
+        startDate: row.find("td:eq(2)").text(),
+        endDate: row.find("td:eq(3)").text(),
+        travelArea: row.find("td:eq(4)").text(), // Use .text() for text-based values
+        noOfAdults: row.find("td:eq(5)").text(),
+        noOfChildren: row.find("td:eq(6)").text(),
+        totalHeadcount: row.find("td:eq(7)").text(),
+        withPets: row.find("td:eq(8)").text() === "Yes", // Assuming "Yes" or "No" text
+        needGuide: row.find("td:eq(9)").text() === "Yes", // Assuming "Yes" or "No" text
+        hotelFee: row.find("td:eq(10)").text(),
+        vehicleFee: row.find("td:eq(11)").text(),
+        serviceCharge: row.find("td:eq(12)").text(),
+        userId: row.find("td:eq(13)").text(),
+        totalAmount: row.find("td:eq(14)").text(),
+};
+    return rowData;
+}
+
+// Click event for the "Edit" button
+$("#editButton").click(function () {
+    // Collect data from the modal fields
+    var packageId = $("#editPackage_id").val();
+    var category = $("#editPackage-category option:selected").text();
+    var StartDate = $("#editStart_Date").val();
+    var EndDate = $("#editEnd_Date").val();
+    var travelArea = $("#editTravel_Area  option:selected").text();
+    var NoOfAdults = $("#editNo-of-adults").val();
+    var NoOfChildren = $("#editNo-of-children").val();
+    var TotalHeadcount = $("#editTotal_headcount").val();
+    var WithPets = $("#editPets-or-no").is(":checked");
+    var NeedGuide = $("#editNeed-guide-or-no").is(":checked");
+    var HotelFee = $("#editHotel-Fee").val();
+    var VehicleFee = $("#editVehicle-Fee").val();
+    var ServiceCharge = $("#editService-Charge").val();
+    var UserId = $("#editUser-ids").val();
+    var TotalAmount = $("#editAmount").val();
+
+    var updatedData = {
+        packageID: packageId,
+        Category: category,
+        StartDate: StartDate,
+        EndDate: EndDate,
+        TravelArea: travelArea,
+        NoOfAdults: NoOfAdults,
+        NoOfChildren: NoOfChildren,
+        TotalHeadcount: TotalHeadcount,
+        WithPets: WithPets,
+        NeedGuide: NeedGuide,
+        HotelFee: HotelFee,
+        VehicleFee: VehicleFee,
+        ServiceCharge: ServiceCharge,
+        UserId: UserId,
+        TotalAmount: TotalAmount,
+    };
+
+    console.log(updatedData);
+
+    // Send the update request to the backend
+    $.ajax({
+        type: "PUT", // Use the appropriate HTTP method for updating data
+        url: "http://localhost:8081/api/v1/customer/updateData",
+        data: JSON.stringify(updatedData), // Send the data as JSON
+        contentType: "application/json",
+        success: function (response) {
+            // Handle the success response from the backend
+            console.log("Data updated successfully: ", response);
+            loadData();
+            // Close the modal or perform any other action as needed
+            $("#myModal").modal("hide");
+        },
+        error: function (error) {
+            // Handle the error response from the backend
+            console.error("Error updating data: " + JSON.stringify(error));
+            // You can display an error message to the user here
+        },
     });
 });
 
 
-// set values then click table row
-$(document).ready(function () {
-    // Add click event listener to table rows
-    $("table").on("click", "tr", function () {
-        var category = $("#package-category");
-        var startDate = $("#Start_Date");
-        var endDate = $("#End_Date");
-        var travelArea = $("#Travel_Area");
-        var noOfAdults = $("#No-of-adults");
-        var noOfChildren = $("#No-of-children");
-        var totalHeadcount = $("#Total_headcount");
-        var withPets = $("#withPets"); // Update with the correct ID
-        var needGuide = $("#needGuide"); // Update with the correct ID
-        var hotelFee = $("#Hotel-Fee");
-        var vehicleFee = $("#Vehicle-Fee");
-        var serviceCharge = $("#Service-Charge");
-        var userId = $("#user-ids");
-        var totalAmount = $("#Amount");
+// set user ids
 
-        // Set the text content of the respective elements
-        category.val($(this).find("td:eq(1)").text());
+$(document).ready(function() {
+    // Make an AJAX request to fetch user IDs
+    $.get("http://localhost:8082/api/v1/user/getAllUserIds", function(data) {
+        // Assuming "data" is an array of user IDs received from the backend
+        var userSelect = $("#user-ids");
 
-        // Convert the date values to 'yyyy-MM-dd' format
-        var originalStartDate = $(this).find("td:eq(2)").text();
-        var originalEndDate = $(this).find("td:eq(3)").text();
-        startDate.val(formatDate(originalStartDate));
-        endDate.val(formatDate(originalEndDate));
-
-        // Set the value of the Travel_Area dropdown if it exists in the options
-        var selectedTravelArea = $(this).find("td:eq(4)").text();
-        if (isOptionExists(travelArea, selectedTravelArea)) {
-            travelArea.val(selectedTravelArea);
-        }
-
-        // Rest of the code remains the same
-        noOfAdults.val($(this).find("td:eq(5)").text());
-        noOfChildren.val($(this).find("td:eq(6)").text());
-        totalHeadcount.val($(this).find("td:eq(7)").text());
-        withPets.prop('checked', $(this).find("td:eq(8)").text() === "true");
-        needGuide.prop('checked', $(this).find("td:eq(9)").text() === "true");
-        hotelFee.val($(this).find("td:eq(10)").text());
-        vehicleFee.val($(this).find("td:eq(11)").text());
-        serviceCharge.val($(this).find("td:eq(12)").text());
-        userId.val($(this).find("td:eq(13)").text());
-        totalAmount.val($(this).find("td:eq(14)").text());
+        // Loop through the user IDs and add options to the select element
+        data.forEach(function(userId) {
+            userSelect.append($("<option>", {
+                value: userId,
+                text: userId
+            }));
+        });
     });
-
-    // Function to check if an option exists in a dropdown
-    function isOptionExists(selectElement, value) {
-        return selectElement.find("option").filter(function () {
-            return $(this).text() === value;
-        }).length > 0;
-    }
-
-    // Function to convert date to 'yyyy-MM-dd' format
-    function formatDate(originalDate) {
-        var dateParts = originalDate.split(" ");
-        if (dateParts.length === 2) {
-            // Convert to 'yyyy-MM-dd' format
-            var months = {
-                "January": "01",
-                "February": "02",
-                "March": "03",
-                "April": "04",
-                "May": "05",
-                "June": "06",
-                "July": "07",
-                "August": "08",
-                "September": "09",
-                "October": "10",
-                "November": "11",
-                "December": "12"
-            };
-            var month = months[dateParts[0]];
-            var day = dateParts[1];
-            var year = dateParts[2];
-            return year + "-" + month + "-" + day;
-        }
-        return originalDate; // Return as is if the date format is not as expected
-    }
 });
-
-
-// search user
-//
-// $(document).ready(function () {
-//     // Add click event listener to table rows
-//     $("table").on("click", "tr", function () {
-//         // ...
-//     });
-//
-//     // Function to check if an option exists in a dropdown
-//     function isOptionExists(selectElement, value) {
-//         return selectElement.find("option").filter(function () {
-//             return $(this).text() === value;
-//         }).length > 0;
-//     }
-//
-//     // Handle user selection and data retrieval
-//     $("#user-ids").change(function () {
-//         var selectedUserId = $("#user-ids option:selected").text();
-//
-//         // Make an AJAX request to retrieve user-specific data
-//         $.ajax({
-//             url: "http://localhost:8081/api/v1/customer/findByUserID", // Replace with your actual data endpoint
-//             method: "GET",
-//             data: { userId: selectedUserId },
-//             success: function (data) {
-//                 // Update the table with the user-specific data
-//                 updateTableWithData(data);
-//             },
-//             error: function () {
-//                 alert("Failed to retrieve user data. Please try again.");
-//             }
-//         });
-//     });
-//
-//     // Function to update the table with user-specific data
-//     function updateTableWithData(data) {
-//         // Clear the table body
-//         $("#table-body").empty();
-//
-//         // Loop through the data and append rows to the table
-//         $.each(data, function (index, item) {
-//             var newRow = "<tr>" +
-//                 "<td>" + item.category + "</td>" +
-//                 "<td>" + item.startDate + "</td>" +
-//                 "<td>" + item.endDate + "</td>" +
-//                 // Add other table columns here
-//                 "</tr>";
-//             $("#table-body").append(newRow);
-//         });
-//     }
-// });
