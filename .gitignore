@@ -20,3 +20,6 @@
 /css/
 /images/
 /js/
+
+
+git remote add gitlab https://gitlab.com/your-username/your-repo.git
