@@ -7,6 +7,8 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
+
+
   <div class="container">
     <div class="title">Registration</div>
     <div class="content">
@@ -17,9 +19,23 @@
             <input type="text" id="fullName" placeholder="Enter your name" required>
           </div>
           <div class="input-box">
+            <span class="details" >User NIC / Passport No:</span>
+            <input type="text" id="User_Nic" placeholder="1234567890" required>
+          </div>
+          <div class="input-box">
+            <span class="details" >User NIC font side scanned images:</span>
+            <input type="file" id="image-front-side" name="image" accept="image/*" required>
+          </div>
+          <div class="input-box">
+            <span class="details" >User NIC font side scanned images:</span>
+            <input type="file" id="image-back-side" name="image" accept="image/*"required>
+          </div>
+
+          <div class="input-box">
             <span class="details">Username</span>
             <input type="text" id="username" placeholder="Enter your username" required>
           </div>
+
           <div class="input-box">
             <span class="details">Email</span>
             <input type="text" id="email" placeholder="Enter your email" required>
@@ -29,12 +45,25 @@
             <input type="text" id="contact" placeholder="Enter your number" required>
           </div>
           <div class="input-box">
+            <span class="details">User Age:</span>
+            <input type="text" id="User_Age" placeholder="20" required>
+          </div>
+          <div class="input-box">
+            <span class="details">User Address:</span>
+            <input type="text" id="User_address" placeholder="Colombo" required>
+          </div>
+
+          <div class="input-box">
             <span class="details">Password</span>
             <input type="text" id="password" placeholder="Enter your password" required>
           </div>
           <div class="input-box">
             <span class="details">Confirm Password</span>
             <input type="text" id="ConformPassword" placeholder="Confirm your password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">User Remarks </span>
+            <input type="text" id="User_remarks" placeholder="Enter your Remarks" required>
           </div>
         </div>
         <div class="gender-details">

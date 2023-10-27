@@ -10,22 +10,30 @@ $("#btn_signIn").click(function () {
     };
 
     // Define the URL of your backend API
-    var backendUrl = "http://localhost:8081/api/v1/customer/login";
-
-    // Send the form data to the backend using AJAX
+    var backendUrl = "http://localhost:8082/api/v1/user/login";
     $.post(backendUrl, formData)
         .done(function (response, textStatus, jqXHR) {
-            // Handle the response from the server
-            if (jqXHR.status === 201) {
-                // Print a message to the console
-                console.log("Login success: " + response);
-                window.location.href = "Main_Travel_Service.html";
-            } else {
-                $("#message").html("Login failed. Please try again.");
+            if (jqXHR.status === 200) {
+                console.log("Response Data:", response);
+
+                if (response === "Login success") {
+                    alert("Login success");
+                    window.location.href = 'indexAdmin.html';
+                }
             }
         })
-        .fail(function (error) {
-            // Handle any errors that occur during the AJAX request
-            console.error("Error sending customer data:", error);
+        .fail(function (jqXHR, textStatus, error) {
+            if (jqXHR.status === 401) {
+                alert("Login failed: Incorrect password");
+            } else {
+                alert("Login failed. Please try again.");
+                console.error("Login failed. Status code: " + jqXHR.status);
+                $("#message").html("Login failed. Please try again.");
+            }
         });
+
 });
+
+$(".btnRegister").click(function () {
+    window.location.href = 'UsersRegisterForm.html';
+})

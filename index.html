@@ -133,7 +133,7 @@
 
         </nav>
 
-        <button class="btn btn-primary">Register</button>
+        <button class="btn btn-primary btnRegister">Register</button>
 
       </div>
     </div>
@@ -164,7 +164,7 @@
 
           <div class="btn-group">
             <button class="btn btn-primary" id="btnLogIn">Login</button>
-            <button class="btn btn-secondary">Register</button>
+            <button class="btn btn-secondary btnRegister">Register</button>
           </div>
 
         </div>
@@ -754,7 +754,14 @@
         // Redirect to your login page (replace 'login.html' with the actual login page URL)
         window.location.href = 'login.html';
       });
+      $(".btnRegister").click(function() {
+        // Redirect to your login page (replace 'login.html' with the actual login page URL)
+        window.location.href = 'UsersRegisterForm.html';
+      });
+
     });
+
+
   </script>
 
 </body>

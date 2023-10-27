@@ -3,12 +3,14 @@ $(document).ready(function () {
     $("#btn_Users_Submit").click(function (e) {
         e.preventDefault(); // Prevent the default form submission
 
+        var userName = $("#userName").val();
         var user_nic = $("#User_Nic").val();
         var gender = $("#gender").val();
         var user_email = $("#user_email").val();
         var contact = $("#contact").val();
         var user_age = $("#User_Age").val();
         var user_address = $("#User_address").val();
+        var user_Password = $("#user_Password").val(); // Include password
         var user_remarks = $("#User_remarks").val();
         var frontSideImageInput = document.getElementById("image-front-side");
         var backSideImageInput = document.getElementById("image-back-side");
@@ -23,12 +25,14 @@ $(document).ready(function () {
 
         reader.onload = function () {
             var data = {
+                userName: userName,
                 user_nic: user_nic,
                 gender: gender,
                 user_email: user_email,
                 contact: contact,
                 user_age: user_age,
                 user_address: user_address,
+                user_Password: user_Password, // Include password in the data
                 user_remarks: user_remarks,
                 frontSideImage: reader.result.split(",")[1],
             };
@@ -63,8 +67,7 @@ $(document).ready(function () {
             }
         });
     }
-
-    // Function to fetch and populate the table
+// Function to fetch and populate the table
     function fetchAndPopulateTable() {
         $.ajax({
             type: 'GET',
@@ -77,6 +80,7 @@ $(document).ready(function () {
                 data.forEach(function (user) {
                     var row = '<tr>' +
                         '<td>' + (user.user_id || '') + '</td>' +
+                        '<td>' + (user.userName || '') + '</td>' +
                         '<td>' + (user.user_nic || '') + '</td>' +
                         '<td>' + (user.gender || '') + '</td>' +
                         '<td>' + (user.user_email || '') + '</td>' +
@@ -104,6 +108,8 @@ $(document).ready(function () {
 
 
 
+
+
 // Event handler for "View" button clicks
 var newUpdatedUserId = null;
 $(document).on("click", ".view-button", function () {
@@ -117,12 +123,14 @@ $(document).on("click", ".view-button", function () {
         dataType: "json",
         success: function (userData) {
             $("#editUser_id").val(newUpdatedUserId || "");
+            $("#editUserName").val(userData.userName || "");
             $("#editUser_Nic").val(userData.user_nic || "");
             $("#editGender").val(userData.gender || "");
             $("#editUser_email").val(userData.user_email || "");
             $("#editContact").val(userData.contact || "");
             $("#editUser_Age").val(userData.user_age || "");
             $("#editUser_address").val(userData.user_address || "");
+            $("#editUser_Password").val(userData.user_Password || "");
             $("#editUser_remarks").val(userData.user_remarks || "");
 
             $("#editUserModal").modal("show");
@@ -137,12 +145,14 @@ $(document).on("click", ".view-button", function () {
 $("#update-user-button").click(function () {
     var updatedUserData = {
         user_id: $("#editUser_id").val(),
+        userName: $("#editUserName").val(),
         user_nic: $("#editUser_Nic").val(),
         gender: $("#editGender").val(),
         user_email: $("#editUser_email").val(),
         contact: $("#editContact").val(),
         user_age: $("#editUser_Age").val(),
         user_address: $("#editUser_address").val(),
+        user_Password: $("#editUser_Password").val(),
         user_remarks: $("#editUser_remarks").val(),
     };
 
@@ -153,33 +163,32 @@ $("#update-user-button").click(function () {
     var frontSideImageInput = document.getElementById("editImage-front-side");
     var backSideImageInput = document.getElementById("editImage-back-side");
 
-    if (frontSideImageInput.files.length > 0) {
-        var frontSideImageFile = frontSideImageInput.files[0];
-        formData.append("user_Image_front_side", frontSideImageFile);
+    if (frontSideImageInput.files.length === 0 || backSideImageInput.files.length === 0) {
+        alert("Please select both front and back images.");
+        return;
     }
 
-    if (backSideImageInput.files.length > 0) {
-        var backSideImageFile = backSideImageInput.files[0];
-        formData.append("user_Image_back_side", backSideImageFile);
+    var frontSideImageFile = frontSideImageInput.files[0];
+    var backSideImageFile = backSideImageInput.files[0];
+
+    // Append other user data to the FormData
+    for (var key in updatedUserData) {
+        if (updatedUserData.hasOwnProperty(key)) {
+            formData.append(key, updatedUserData[key]);
+        }
     }
 
-    // Add other user data to the FormData
-    formData.append("user_id", updatedUserData.user_id);
-    formData.append("user_nic", updatedUserData.user_nic);
-    formData.append("gender", updatedUserData.gender);
-    formData.append("user_email", updatedUserData.user_email);
-    formData.append("contact", updatedUserData.contact);
-    formData.append("user_age", updatedUserData.user_age);
-    formData.append("user_address", updatedUserData.user_address);
-    formData.append("user_remarks", updatedUserData.user_remarks);
+    // Append image files to the FormData
+    formData.append("user_Image_front_side", frontSideImageFile);
+    formData.append("user_Image_back_side", backSideImageFile);
 
     // Send the FormData to the backend
     $.ajax({
-        type: "POST", // Use POST to send FormData
+        type: "POST",
         url: "http://localhost:8082/api/v1/user/updateUserData",
         data: formData,
-        contentType: false,
-        processData: false, // Don't process the data
+        contentType: false, // Set to false to prevent jQuery from setting the content type
+        processData: false, // Set to false to prevent data processing
         success: function (response) {
             console.log("Data updated successfully: " + JSON.stringify(response));
             $("#editUserModal").modal("hide");

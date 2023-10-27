@@ -18,7 +18,7 @@
 <body>
 
 
-<div class="container row">
+<div class="container row"  >
   <!-- Form 1 -->
   <div class="col-lg-6">
     <div class="card">
@@ -29,7 +29,11 @@
         <form>
           <div class="form-group">
             <label for="user_id" class="form-control-label">User ID:</label>
-            <input type="text" id="user_id" placeholder="Kamal" class="form-control">
+            <input type="text" id="user_id" placeholder="1" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="userName" class="form-control-label">User Name:</label>
+            <input type="text" id="userName" placeholder="Kamal" class="form-control">
           </div>
           <div class="form-group">
             <label for="User_Nic" class="form-control-label">User NIC / Passport No:</label>
@@ -82,6 +86,10 @@
             <input type="text" id="User_address" placeholder="Colombo" class="form-control">
           </div>
           <div class="form-group">
+            <label for="user_Password">User Password:</label>
+            <input type="password" id="user_Password" name="user_Password" placeholder="Enter your password" required>
+          </div>
+          <div class="form-group">
             <label for="User_remarks" class="form-control-label">Remarks (any special needs, illnesses, etc.):</label>
             <textarea id="User_remarks" name="remarks" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
           </div>
@@ -100,6 +108,7 @@
   <thead>
   <tr>
     <th scope="col">ID</th>
+    <th scope="col">Name</th>
     <th scope="col">Nic</th>
     <th scope="col">Gender</th>
     <th scope="col">Email</th>
@@ -137,6 +146,10 @@
             <input type="text" id="editUser_id" placeholder="Kamal" class="form-control">
           </div>
           <div class="form-group">
+            <label for="editUserName" class="form-control-label">User Name:</label>
+            <input type="text" id="editUserName" placeholder="Kamal" class="form-control">
+          </div>
+          <div class="form-group">
             <label for="editUser_Nic" class="form-control-label">User NIC / Passport No:</label>
             <input type="text" id="editUser_Nic" placeholder="1234567890" class="form-control">
           </div>
@@ -172,6 +185,10 @@
           <div class="form-group">
             <label for="editUser_address" class="form-control-label">User Address:</label>
             <input type="text" id="editUser_address" placeholder="Colombo" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="editUser_Password">User Password:</label>
+            <input type="password" id="editUser_Password" name="user_Password" placeholder="Enter your password" required>
           </div>
           <div class="form-group">
             <label for="editUser_remarks" class="form-control-label">Remarks (any special needs, illnesses, etc.):</label>
