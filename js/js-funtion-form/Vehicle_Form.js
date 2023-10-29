@@ -36,11 +36,14 @@ $(document).ready(function () {
             processData: false,
             success: function (response) {
                 console.log("Data sent successfully. Server response: " + JSON.stringify(response));
+                loadData();
+                alert("Data saved successfully");
             },
             error: function (error) {
                 console.error("Error sending data: " + JSON.stringify(error));
             }
         });
+
     });
 });
 $(document).ready(function () {
@@ -109,152 +112,10 @@ function loadData() {
 
 
 // ----------------------------------------
-//
-// $(document).ready(function () {
-//     var jsonData = {}; // Define jsonData outside the functions.
-//     var originalImages = {}; // Store the original images
-//     var updateVehicleId = null;
-//
-//     // Function to read image files as byte arrays
-//     function readImageFileAsByteArray(file, callback) {
-//         if (file) {
-//             var reader = new FileReader();
-//             reader.onload = function (event) {
-//                 var arrayBuffer = event.target.result;
-//                 var uint8Array = new Uint8Array(arrayBuffer);
-//                 callback(Array.from(uint8Array));
-//             };
-//             reader.readAsArrayBuffer(file);
-//         }
-//     }
-//
-//     function fetchVehicleDetails(vehicleId) {
-//         console.log("Fetching vehicle details for ID: " + vehicleId);
-//         $.ajax({
-//             type: "GET",
-//             url: "http://localhost:8083/api/v1/vehicle/getData/" + vehicleId,
-//             success: function (vehicle) {
-//                 // Store the original images
-//                 originalImages.frontViewImage = vehicle.frontViewImage;
-//                 originalImages.rearViewImage = vehicle.rearViewImage;
-//                 originalImages.sideViewImage = vehicle.sideViewImage;
-//                 originalImages.frontInteriorImage = vehicle.frontInteriorImage;
-//                 originalImages.rearInteriorImage = vehicle.rearInteriorImage;
-//                 originalImages.licenseFrontImage = vehicle.licenseFrontImage;
-//                 originalImages.licenseRearImage = vehicle.licenseRearImage;
-//
-//                 // Populate the modal with vehicle details
-//                 $("#editVehicle_Id").val(vehicle.vehicleId);
-//                 $("#editVehicle_brand").val(vehicle.vehicleBrand);
-//                 $("#editCategory").val(vehicle.category);
-//                 $("#editFuel_type").val(vehicle.fuelType);
-//                 $("#editHybrid_or_Non-Hybrid").val(vehicle.hybridOrNonHybrid);
-//                 $("#editFuel_usage").val(vehicle.fuelUsage);
-//                 $("#editSeat_Capacity").val(vehicle.seatCapacity);
-//                 $("#editVehicle_type").val(vehicle.vehicleType);
-//                 $("#editTransmission_type").val(vehicle.transmissionType);
-//                 $("#editDriver_Name").val(vehicle.driverName);
-//                 $("#editContact_No").val(vehicle.driverContactNo);
-//                 $("#editUser_remarks").val(vehicle.remarks);
-//
-//                 // Open the modal
-//                 $("#vehicleModal").modal('show');
-//             },
-//             error: function (error) {
-//                 console.error("Error fetching vehicle details: " + JSON.stringify(error));
-//             }
-//         });
-//     }
-//
-//     // Handle click event for the "View" button within the table
-//     $(document).on("click", ".view-button", function () {
-//         updateVehicleId = $(this).data("vehicleid");
-//         fetchVehicleDetails(updateVehicleId);
-//     });
-//
-//     // Event handler for the Save Changes button
-//     $("#updateData").click(function () {
-//         // Clear jsonData before using it
-//         jsonData = {};
-//
-//         // Collect form fields
-//         jsonData.vehicleDTO = {
-//             vehicleId: $("#editVehicle_Id").val(),
-//             vehicleBrand: $("#editVehicle_brand").val(),
-//             category: $("#editCategory").val(),
-//             fuelType: $("#editFuel_type").val(),
-//             hybridOrNonHybrid: $("#editHybrid_or_Non-Hybrid").val(),
-//             fuelUsage: $("#editFuel_usage").val(),
-//             seatCapacity: $("#editSeat_Capacity").val(),
-//             vehicleType: $("#editVehicle_type").val(),
-//             transmissionType: $("#editTransmission_type").val(),
-//             driverName: $("#editDriver_Name").val(),
-//             driverContactNo: $("#editContact_No").val(),
-//             remarks: $("#editUser_remarks").val()
-//         };
-//
-//         // Send the images one by one
-//         sendImage("editFront_view", "frontViewImage", originalImages.frontViewImage, function () {
-//             sendImage("editRear_View", "rearViewImage", originalImages.rearViewImage, function () {
-//                 sendImage("editSide_view", "sideViewImage", originalImages.sideViewImage, function () {
-//                     sendImage("editFont_Interior", "frontInteriorImage", originalImages.frontInteriorImage, function () {
-//                         sendImage("editRear_Interior", "rearInteriorImage", originalImages.rearInteriorImage, function () {
-//                             sendImage("editLicense_Font_Image", "licenseFrontImage", originalImages.licenseFrontImage, function () {
-//                                 sendImage("editLicense_Rear_Image", "licenseRearImage", originalImages.licenseRearImage, function () {
-//                                     // Send the data to the server
-//                                     sendDataToServer();
-//                                 });
-//                             });
-//                         });
-//                     });
-//                 });
-//             });
-//         });
-//     });
-//
-//     // Function to send an image
-//     function sendImage(inputFieldId, jsonDataField, originalImageData, callback) {
-//         var fileInput = $("#" + inputFieldId)[0];
-//         if (fileInput.files.length > 0) {
-//             // If a new image is provided, use it
-//             readImageFileAsByteArray(fileInput.files[0], function (imageBytes) {
-//                 jsonData[jsonDataField] = Array.from(imageBytes);
-//                 callback();
-//             });
-//         } else if (originalImageData) {
-//             // If no new image is provided, use the original image from the database
-//             jsonData[jsonDataField] = originalImageData;
-//             callback();
-//         } else {
-//             callback();
-//         }
-//     }
-//
-//     function sendDataToServer() {
-//         $.ajax({
-//             type: "PUT",
-//             url: "http://localhost:8083/api/v1/vehicle/updateVehicle",
-//             data: jsonData,
-//             processData: false,
-//             contentType: false,
-//             success: function (response) {
-//                 alert("Update Success");
-//                 console.log("Data updated successfully. Server response: " + JSON.stringify(response));
-//                 $("#vehicleModal").modal('hide');
-//             },
-//             error: function (error) {
-//                 console.error("Error updating data: " + JSON.stringify(error));
-//             }
-//         });
-//     }
-//
-//     // Close the modal
-//     $("#btnCloseModel1").click(function () {
-//         $("#vehicleModal").modal('hide');
-//     });
-// });
+
 $(document).ready(function () {
     var updateVehicleId = null;
+    var originalVehicleImages = []; // Initialize as an empty array
 
     // Function to fetch and display vehicle details
     function fetchAndDisplayDetails(vehicleId) {
@@ -270,6 +131,7 @@ $(document).ready(function () {
             }
         });
     }
+
 
     // Handle click event for the "View" button within the table
     $(document).on("click", ".view-button", function () {
@@ -294,7 +156,13 @@ $(document).ready(function () {
         var driverContactNo = $("#editContact_No").val();
         var remarks = $("#editUser_remarks").val();
 
-
+        var editFront_view =document.getElementById("editFront_view");
+        var editRear_View =document.getElementById("editRear_View");
+        var editSide_view =document.getElementById("editSide_view");
+        var editFont_Interior =document.getElementById("editFont_Interior");
+        var editRear_Interior =document.getElementById("editRear_Interior");
+        var editLicense_Font_Image =document.getElementById("editLicense_Font_Image");
+        var editLicense_Rear_Image =document.getElementById("editLicense_Rear_Image");
 
         var vehicleDTO={
             vehicleId:vehicleId,
@@ -313,13 +181,34 @@ $(document).ready(function () {
 
         formData.append("vehicleDTO", new Blob([JSON.stringify(vehicleDTO)], { type: "application/json" }));
         // Add image files
-        formData.append("frontViewImage", $("#editFront_view")[0].files[0]);
-        formData.append("rearViewImage", $("#editRear_View")[0].files[0]);
-        formData.append("sideViewImage", $("#editSide_view")[0].files[0]);
-        formData.append("frontInteriorImage", $("#editFont_Interior")[0].files[0]);
-        formData.append("rearInteriorImage", $("#editRear_Interior")[0].files[0]);
-        formData.append("licenseFrontImage", $("#editLicense_Font_Image")[0].files[0]);
-        formData.append("licenseRearImage", $("#editLicense_Rear_Image")[0].files[0]);
+
+        if (editFront_view.files.length > 0 || editRear_View.files.length > 0 ||editSide_view.files.length > 0
+            ||editFont_Interior.files.length > 0 || editRear_Interior.files.length > 0 ||
+            editLicense_Font_Image.files.length > 0 ||editLicense_Rear_Image.files.length > 0
+        ) {
+
+            formData.append("frontViewImage", $("#editFront_view")[0].files[0]);
+            formData.append("rearViewImage", $("#editRear_View")[0].files[0]);
+            formData.append("sideViewImage", $("#editSide_view")[0].files[0]);
+            formData.append("frontInteriorImage", $("#editFont_Interior")[0].files[0]);
+            formData.append("rearInteriorImage", $("#editRear_Interior")[0].files[0]);
+            formData.append("licenseFrontImage", $("#editLicense_Font_Image")[0].files[0]);
+            formData.append("licenseRearImage", $("#editLicense_Rear_Image")[0].files[0]);
+
+        } else {
+            var userConfirmed = confirm("No image files selected. Do you want to add old Images and continue?");
+            if (userConfirmed) {
+                formData.append("frontViewImage", originalVehicleImages.frontViewImage);
+                formData.append("rearViewImage", originalVehicleImages.rearViewImage);
+                formData.append("sideViewImage", originalVehicleImages.sideViewImage);
+                formData.append("frontInteriorImage", originalVehicleImages.frontInteriorImage);
+                formData.append("rearInteriorImage", originalVehicleImages.rearInteriorImage);
+                formData.append("licenseFrontImage", originalVehicleImages.licenseFrontImage);
+                formData.append("licenseRearImage", originalVehicleImages.licenseRearImage);
+            } else {
+              return;
+            }
+        }
 
         $.ajax({
             type: "PUT",
@@ -329,6 +218,7 @@ $(document).ready(function () {
             processData: false,
             success: function (response) {
                 alert("Update Success");
+                loadData();
                 console.log("Data updated successfully. Server response: " + JSON.stringify(response));
                 $("#vehicleModal").modal('hide');
             },
@@ -338,19 +228,63 @@ $(document).ready(function () {
         });
     });
 
+
     // Function to populate the modal with vehicle details
     function populateModal(vehicle) {
-        $("#editVehicle_Id").val(vehicle.vehicleId);
-        $("#editVehicle_brand").val(vehicle.vehicleBrand);
-        $("#editCategory").val(vehicle.category);
-        $("#editFuel_type").val(vehicle.fuelType);
-        $("#editHybrid_or_Non-Hybrid").val(vehicle.hybridOrNonHybrid);
-        $("#editFuel_usage").val(vehicle.fuelUsage);
-        $("#editSeat_Capacity").val(vehicle.seatCapacity);
+        $("#editVehicle_Id").val(vehicle.data.vehicleId);
+        $("#editVehicle_brand").val(vehicle.data.vehicleBrand);
+        $("#editCategory").val(vehicle.data.category);
+        $("#editFuel_type").val(vehicle.data.fuelType);
+        $("#editHybrid_or_Non-Hybrid").val(vehicle.data.hybridOrNonHybrid);
+        $("#editFuel_usage").val(vehicle.data.fuelUsage);
+        $("#editSeat_Capacity").val(vehicle.data.seatCapacity);
+        $("#editVehicle_type").val(vehicle.data.vehicleType);
+        $("#editTransmission_type").val(vehicle.data.transmissionType);
+        $("#editDriver_Name").val(vehicle.data.driverName);
+        $("#editContact_No").val(vehicle.data.driverContactNo);
+        $("#editUser_remarks").val(vehicle.data.remarks);
+
+        var vehicleOriginalImagesObject ={
+            frontViewImage:vehicle.frontViewImage,
+            rearViewImage : vehicle.rearViewImage,
+            sideViewImage : vehicle.sideViewImage,
+            frontInteriorImage : vehicle.frontInteriorImage,
+            rearInteriorImage : vehicle.rearInteriorImage,
+            licenseFrontImage : vehicle.licenseFrontImage,
+            licenseRearImage : vehicle.licenseRearImage
+        }
+        originalVehicleImages.push(vehicleOriginalImagesObject);
     }
 
     // Close the modal
     $("#btnCloseModel1").click(function () {
         $("#vehicleModal").modal('hide');
     });
+});
+
+
+// ----------------------------------------------- delete vehicle---------------------------------------------------
+
+
+// Event handler for the Delete button
+$("#deleteData").click(function () {
+    var vehicleId = $("#editVehicle_Id").val();
+
+    var userConfirmed = confirm("Are you sure you want to delete this vehicle?");
+    if (userConfirmed) {
+        // Send an Ajax request to delete the vehicle
+        $.ajax({
+            type: "DELETE",
+            url: "http://localhost:8083/api/v1/vehicle/deleteVehicle/" + vehicleId,
+            success: function (response) {
+                alert("Delete Success");
+                console.log("Data deleted successfully. Server response: " + JSON.stringify(response));
+                $("#vehicleModal").modal('hide');
+                loadData();
+            },
+            error: function (error) {
+                console.error("Error deleting data: " + JSON.stringify(error));
+            }
+        });
+    }
 });

@@ -22,10 +22,10 @@
       </div>
       <div class="card-body">
         <form>
-          <div class="form-group">
-            <label for="Vehicle_Id" class="form-control-label">Vehicle ID :</label>
-            <input type="text" id="Vehicle_Id" placeholder="123" class="form-control">
-          </div>
+<!--          <div class="form-group">-->
+<!--            <label for="Vehicle_Id" class="form-control-label">Vehicle ID :</label>-->
+<!--            <input type="text" id="Vehicle_Id" placeholder="123" class="form-control">-->
+<!--          </div>-->
           <div class="form-group">
             <label for="Vehicle_brand" class="form-control-label">Vehicle brand :</label>
             <input type="text" id="Vehicle_brand" placeholder="1234567890" class="form-control">
@@ -192,8 +192,8 @@
 
 <!--model data-->
 
-<!-- Modal -->
-<div class="modal fade" id="vehicleModal" tabindex="-1" role="dialog" aria-labelledby="vehicleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="vehicleModal" tabindex="-1" role="dialog" aria-labelledby="vehicleModalLabel" aria-hidden="true" style="max-width: 100%; width: auto;">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -225,8 +225,8 @@
         <div class="form-group">
           <label for="editFuel_type">Fuel_type :</label>
           <select id="editFuel_type" name="Fuel_type" class="form-control">
-            <option value="1">Diesel</option>
-            <option value="2">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Petrol">Petrol</option>
           </select>
         </div>
 
@@ -273,10 +273,10 @@
         <div class="form-group">
           <label for="editVehicle_type">Vehicle type :</label>
           <select id="editVehicle_type" name="editVehicle_type" class="form-control">
-            <option value="1">Car</option>
-            <option value="2">Van (7-12 seats)</option>
-            <option value="3">SUV</option>
-            <option value="4">Bus (30-40 seats)</option>
+            <option value="Car">Car</option>
+            <option value="Van (7-12 seats)">Van (7-12 seats)</option>
+            <option value="SUV">SUV</option>
+            <option value="Bus (30-40 seats)">Bus (30-40 seats)</option>
           </select>
         </div>
 
@@ -307,19 +307,17 @@
           <label for="editLicense_Rear_Image">Driver's license Scanned Image (Rear side)</label>
           <input type="file" id="editLicense_Rear_Image" name="image" accept="image/*">
         </div>
-l
-
         <div class="form-group">
           <label for="editUser_remarks" class="form-control-label">Remarks (any special needs, illnesses, etc.):</label>
           <textarea id="editUser_remarks" name="remarks" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
         </div>
-
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="updateData">Update Data</button>
+        <button type="button" class="btn btn-danger" id="deleteData">Delete</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
+
     </div>
   </div>
 </div>
