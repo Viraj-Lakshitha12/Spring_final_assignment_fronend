@@ -90,10 +90,22 @@
             <input type="password" id="user_Password" name="user_Password" placeholder="Enter your password" required>
           </div>
           <div class="form-group">
+            <label for="user_rank">Rank :</label>
+            <select id="user_rank" name="user_rank" class="form-control">
+              <option value="USER">USER</option>
+              <option value="MAIN PACKAGE ADMIN">MAIN PACKAGE ADMIN</option>
+              <option value="USER ADMIN">USER ADMIN</option>
+              <option value="GUIDE ADMIN">GUIDE ADMIN</option>
+              <option value="VEHICLE ADMIN">VEHICLE ADMIN</option>
+              <option value="HOTEL ADMIN">HOTEL ADMIN</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label for="User_remarks" class="form-control-label">Remarks (any special needs, illnesses, etc.):</label>
             <textarea id="User_remarks" name="remarks" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
           </div>
-          <div >
+
+          <div>
             <button type="submit" id="btn_Users_Submit" class="btn btn-primary">Submit</button>
             <button type="reset" id="btn_Users_Reset" class="btn btn-danger">Reset</button>
           </div>
@@ -115,9 +127,10 @@
     <th scope="col">Contact</th>
     <th scope="col">Age</th>
     <th scope="col">Address</th>
+    <th scope="col">Rank</th>
     <th scope="col">Remarks</th>
-    <th scope="col">Front Side Image</th>
-    <th scope="col">Back Side Image</th>
+    <th scope="col">NIC font side</th>
+    <th scope="col">NIC Back side</th>
     <th scope="col">Action</th>
   </tr>
   </thead>
@@ -189,6 +202,17 @@
           <div class="form-group">
             <label for="editUser_Password">User Password:</label>
             <input type="password" id="editUser_Password" name="user_Password" placeholder="Enter your password" required>
+          </div>
+          <div class="form-group">
+            <label for="editUser_rank">Rank :</label>
+            <select id="editUser_rank" name="user_rank" class="form-control">
+              <option value="USER">USER</option>
+              <option value="MAIN PACKAGE ADMIN">MAIN PACKAGE ADMIN</option>
+              <option value="USER ADMIN">USER ADMIN</option>
+              <option value="GUIDE ADMIN">GUIDE ADMIN</option>
+              <option value="VEHICLE ADMIN">VEHICLE ADMIN</option>
+              <option value="HOTEL ADMIN">HOTEL ADMIN</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="editUser_remarks" class="form-control-label">Remarks (any special needs, illnesses, etc.):</label>

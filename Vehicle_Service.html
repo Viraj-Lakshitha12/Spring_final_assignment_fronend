@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Vehicle Manage</title>
   <link href="css/font-face.css" rel="stylesheet" media="all">
   <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
   <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
@@ -157,26 +157,28 @@
 </div>
 
 <!--table details-->
-<table id="vehicleData">
+<table id="vehicleData" class="table table-sm" style="font-size: 12px;">
   <thead>
   <tr>
-    <th>Vehicle ID</th>
-    <th>Vehicle Brand</th>
+    <th>ID</th>
+    <th>Brand</th>
     <th>Category</th>
     <th>Fuel Type</th>
-    <th>Hybrid or Non-Hybrid</th>
+    <th>Hybrid or Not</th>
     <th>Fuel Usage (km/l)</th>
     <th>Seat Capacity</th>
     <th>Vehicle Type</th>
     <th>Transmission Type</th>
     <th>Driver Name</th>
-    <th>Driver Contact No</th>
+    <th>Driver Contact</th>
     <th>Remarks</th>
     <th>Front View</th>
     <th>Rear View</th>
     <th>Side View</th>
     <th>Front Interior View</th>
     <th>Rear Interior View</th>
+    <th>License Front</th>
+    <th>License Rear</th>
     <th>View</th>
   </tr>
   </thead>
@@ -184,6 +186,7 @@
   <!-- Data will be dynamically inserted here -->
   </tbody>
 </table>
+
 
 
 
@@ -212,26 +215,26 @@
         <div class="form-group">
           <label for="editCategory">Category :</label>
           <select id="editCategory" name="Category" class="form-control">
-            <option value="male">Economy</option>
-            <option value="female">Mid-Range</option>
-            <option value="other">Luxury</option>
-            <option value="other"> Super Luxury</option>
+            <option value="Economy">Economy</option>
+            <option value="Mid-Range">Mid-Range</option>
+            <option value="Luxury">Luxury</option>
+            <option value="Super Luxury"> Super Luxury</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="editFuel_type">Fuel_type :</label>
           <select id="editFuel_type" name="Fuel_type" class="form-control">
-            <option value="male">Diesel</option>
-            <option value="female">Petrol</option>
+            <option value="1">Diesel</option>
+            <option value="2">Petrol</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="editHybrid_or_Non-Hybrid">Hybrid or Non-Hybrid :</label>
           <select id="editHybrid_or_Non-Hybrid" name="Hybrid_or_Non-Hybrid" class="form-control">
-            <option value="male">Hybrid</option>
-            <option value="female">Non-Hybrid</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Non-Hybrid">Non-Hybrid</option>
           </select>
         </div>
 
@@ -269,19 +272,19 @@
 
         <div class="form-group">
           <label for="editVehicle_type">Vehicle type :</label>
-          <select id="editVehicle_type" name="Vehicle_type" class="form-control">
-            <option value="male">Car</option>
-            <option value="female">Van (7-12 seats)</option>
-            <option value="female">SUV</option>
-            <option value="female">Bus (30-40 seats)</option>
+          <select id="editVehicle_type" name="editVehicle_type" class="form-control">
+            <option value="1">Car</option>
+            <option value="2">Van (7-12 seats)</option>
+            <option value="3">SUV</option>
+            <option value="4">Bus (30-40 seats)</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="editTransmission_type">Transmission type :</label>
           <select id="editTransmission_type" name="Transmission_type " class="form-control">
-            <option value="male">Auto</option>
-            <option value="female">Manual</option>
+            <option value="Auto">Auto</option>
+            <option value="Manual">Manual</option>
           </select>
         </div>
 
@@ -304,7 +307,7 @@
           <label for="editLicense_Rear_Image">Driver's license Scanned Image (Rear side)</label>
           <input type="file" id="editLicense_Rear_Image" name="image" accept="image/*">
         </div>
-
+l
 
         <div class="form-group">
           <label for="editUser_remarks" class="form-control-label">Remarks (any special needs, illnesses, etc.):</label>
@@ -322,7 +325,9 @@
 </div>
 
 
+<!-- jQuery first, then Bootstrap JS -->
 <script src="vendor/jquery-3.2.1.min.js"></script>
+<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
 <script src="js/js-funtion-form/Vehicle_Form.js"></script>
 
 <script>

@@ -10,7 +10,8 @@ $(document).ready(function () {
         var contact = $("#contact").val();
         var user_age = $("#User_Age").val();
         var user_address = $("#User_address").val();
-        var user_Password = $("#user_Password").val(); // Include password
+        var user_Password = $("#user_Password").val();
+        var user_rank = $("#user_rank").val();
         var user_remarks = $("#User_remarks").val();
         var frontSideImageInput = document.getElementById("image-front-side");
         var backSideImageInput = document.getElementById("image-back-side");
@@ -32,7 +33,8 @@ $(document).ready(function () {
                 contact: contact,
                 user_age: user_age,
                 user_address: user_address,
-                user_Password: user_Password, // Include password in the data
+                user_Password: user_Password,
+                user_rank : user_rank,
                 user_remarks: user_remarks,
                 frontSideImage: reader.result.split(",")[1],
             };
@@ -61,6 +63,8 @@ $(document).ready(function () {
             success: function (response) {
                 console.log("POST request successful. Server response: " + JSON.stringify(response));
                 fetchAndPopulateTable();
+                location.reload();
+
             },
             error: function (error) {
                 console.error("POST request failed: " + JSON.stringify(error));
@@ -87,6 +91,7 @@ $(document).ready(function () {
                         '<td>' + (user.contact || '') + '</td>' +
                         '<td>' + (user.user_age || '') + '</td>' +
                         '<td>' + (user.user_address || '') + '</td>' +
+                        '<td>' + (user.user_rank || '') + '</td>' +
                         '<td>' + (user.user_remarks || '') + '</td>' +
                         '<td><img src="data:image/jpeg;base64,' + (user.frontSideImage || '') + '" alt="Front Image" width="100"></td>' +
                         '<td><img src="data:image/jpeg;base64,' + (user.backSideImage || '') + '" alt="Back Image" width="100"></td>' +
@@ -112,6 +117,7 @@ $(document).ready(function () {
 
 // Event handler for "View" button clicks
 var newUpdatedUserId = null;
+
 $(document).on("click", ".view-button", function () {
     var userId = $(this).data("id");
     newUpdatedUserId = userId;
@@ -122,24 +128,28 @@ $(document).on("click", ".view-button", function () {
         url: "http://localhost:8082/api/v1/user/getUserData/" + userId,
         dataType: "json",
         success: function (userData) {
-            $("#editUser_id").val(newUpdatedUserId || "");
-            $("#editUserName").val(userData.userName || "");
-            $("#editUser_Nic").val(userData.user_nic || "");
-            $("#editGender").val(userData.gender || "");
-            $("#editUser_email").val(userData.user_email || "");
-            $("#editContact").val(userData.contact || "");
-            $("#editUser_Age").val(userData.user_age || "");
-            $("#editUser_address").val(userData.user_address || "");
-            $("#editUser_Password").val(userData.user_Password || "");
-            $("#editUser_remarks").val(userData.user_remarks || "");
+            // Check if the user rank is "USER ADMIN"
 
-            $("#editUserModal").modal("show");
+                $("#editUser_id").val(newUpdatedUserId || "");
+                $("#editUserName").val(userData.userName || "");
+                $("#editUser_Nic").val(userData.user_nic || "");
+                $("#editGender").val(userData.gender || "");
+                $("#editUser_email").val(userData.user_email || "");
+                $("#editContact").val(userData.contact || "");
+                $("#editUser_Age").val(userData.user_age || "");
+                $("#editUser_address").val(userData.user_address || "");
+                $("#editUser_Password").val(userData.user_Password || "");
+                $("#editUser_rank").val(userData.user_rank || "");
+                $("#editUser_remarks").val(userData.user_remarks || "");
+
+                $("#editUserModal").modal("show");
         },
         error: function (error) {
             console.error("Error fetching user data: " + JSON.stringify(error));
         }
     });
 });
+
 
 // Event handler for the "Update" button in the edit user modal
 $("#update-user-button").click(function () {
@@ -153,6 +163,7 @@ $("#update-user-button").click(function () {
         user_age: $("#editUser_Age").val(),
         user_address: $("#editUser_address").val(),
         user_Password: $("#editUser_Password").val(),
+        user_rank: $("#editUser_rank").val(),
         user_remarks: $("#editUser_remarks").val(),
     };
 

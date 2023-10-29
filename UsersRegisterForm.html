@@ -1,96 +1,99 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title> Responsive Registration Form | CodingLab </title>
-    <link rel="stylesheet" href="css/style.css">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+<head>
+  <meta charset="UTF-8">
+  <title> Registration Form </title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <body>
-
-
-  <div class="container">
-    <div class="title">Registration</div>
-    <div class="content">
-      <form action="#">
-        <div class="user-details">
-          <div class="input-box">
-            <span class="details" >Full Name</span>
-            <input type="text" id="fullName" placeholder="Enter your name" required>
-          </div>
-          <div class="input-box">
-            <span class="details" >User NIC / Passport No:</span>
-            <input type="text" id="User_Nic" placeholder="1234567890" required>
-          </div>
-          <div class="input-box">
-            <span class="details" >User NIC font side scanned images:</span>
-            <input type="file" id="image-front-side" name="image" accept="image/*" required>
-          </div>
-          <div class="input-box">
-            <span class="details" >User NIC font side scanned images:</span>
-            <input type="file" id="image-back-side" name="image" accept="image/*"required>
-          </div>
-
-          <div class="input-box">
-            <span class="details">Username</span>
-            <input type="text" id="username" placeholder="Enter your username" required>
-          </div>
-
-          <div class="input-box">
-            <span class="details">Email</span>
-            <input type="text" id="email" placeholder="Enter your email" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Phone Number</span>
-            <input type="text" id="contact" placeholder="Enter your number" required>
-          </div>
-          <div class="input-box">
-            <span class="details">User Age:</span>
-            <input type="text" id="User_Age" placeholder="20" required>
-          </div>
-          <div class="input-box">
-            <span class="details">User Address:</span>
-            <input type="text" id="User_address" placeholder="Colombo" required>
-          </div>
-
-          <div class="input-box">
-            <span class="details">Password</span>
-            <input type="text" id="password" placeholder="Enter your password" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Confirm Password</span>
-            <input type="text" id="ConformPassword" placeholder="Confirm your password" required>
-          </div>
-          <div class="input-box">
-            <span class="details">User Remarks </span>
-            <input type="text" id="User_remarks" placeholder="Enter your Remarks" required>
-          </div>
+<div class="container">
+  <div class="title">Registration</div>
+  <div class="content">
+    <form action="#">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Full Name</span>
+          <input type="text" id="fullName" placeholder="Enter your name" required>
         </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1" value="Male">
-          <input type="radio" name="gender" id="dot-2" value="Female">
-          <span class="gender-title">Gender</span>
-          <div class="category">
-            <label for="dot-1">
-              <span class="dot one"></span>
-              <span class="gender">Male</span>
-            </label>
-            <label for="dot-2">
-              <span class="dot two"></span>
-              <span class="gender">Female</span>
-            </label>
-          </div>
+        <div class="input-box">
+          <span class="details">User NIC / Passport No:</span>
+          <input type="text" id="User_Nic" placeholder="1234567890" required>
         </div>
-
-        <div class="button">
-          <input type="button" value="Register" id="btnSubmit">
+        <div class="input-box">
+          <span class="details">Profile picture </span>
+          <input type="file" id="profilePic" name="image" accept="image/*" required>
         </div>
-      </form>
-    </div>
+        <div class="input-box">
+          <span class="details">User NIC font side scanned images:</span>
+          <input type="file" id="image-front-side" name="image" accept="image/*" required>
+        </div>
+        <div class="input-box">
+          <span class="details">User NIC back side scanned images:</span>
+          <input type="file" id="image-back-side" name="image" accept="image/*" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Username</span>
+          <input type="text" id="username" placeholder="Enter your username" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input type="text" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Phone Number</span>
+          <input type="text" id="contact" placeholder="Enter your number" required>
+        </div>
+        <div class="input-box">
+          <span class="details">User Age:</span>
+          <input type="text" id="User_Age" placeholder="20" required>
+        </div>
+        <div class="input-box">
+          <span class="details">User Address:</span>
+          <input type="text" id="User_address" placeholder="Colombo" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Password</span>
+          <input type="text" id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="input-box">
+          <span class="details">Confirm Password</span>
+          <input type="text" id="ConformPassword" placeholder="Confirm your password" required>
+        </div>
+        <div class="input-box">
+          <span class="details">User Remarks</span>
+          <input type="text" id="User_remarks" placeholder="Enter your Remarks" required>
+        </div>
+      </div>
+      <div class="input-box">
+        <span class="details">User Rank</span>
+        <select id="user_rank" name="user_rank" required>
+          <option value="USER">USER</option>
+        </select>
+      </div>
+      <br>
+      <div class="gender-details">
+        <input type="radio" name="gender" id="dot-1" value="Male">
+        <input type="radio" name="gender" id="dot-2" value="Female">
+        <span class="gender-title">Gender</span>
+        <div class="category">
+          <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Female</span>
+          </label>
+        </div>
+      </div>
+      <div class="button">
+        <input type="button" value="Register" id="btnSubmit">
+      </div>
+    </form>
   </div>
-
-
-  <script src="JQuery/jquery-3.6.1.min.js"></script>
-  <script src="js/js-funtion-form/RegisterUsers_form.js"></script>
+</div>
+<script src="JQuery/jquery-3.6.1.min.js"></script>
+<script src="js/js-funtion-form/RegisterUsers_form.js"></script>
 </body>
 </html>
