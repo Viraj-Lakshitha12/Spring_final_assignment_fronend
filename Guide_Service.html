@@ -104,8 +104,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="Guide_experience" class="form-control-label">Guide Experience :</label>
-                        <textarea id="Guide_experience" name="Guide_experience" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
+                        <label for="guide_experience" class="form-control-label">Guide Experience :</label>
+                        <textarea id="guide_experience" name="guide_experience" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -242,24 +242,25 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="btnCloseModel" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="saveGuideChanges">Save Changes</button>
+                <button type="button" class="btn btn-danger" id="deleteData">Delete</button>
+                <button type="button" class="btn btn-secondary" id="btnCloseModel" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
 
 
-<!-- Include jQuery library -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Your JavaScript code (Guide_Form.js) -->
-<script src="js/js-funtion-form/Guide_Form.js"></script>
+
+
+<script src="JQuery/jquery-3.6.1.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-
+<!-- Your JavaScript code (Guide_Form.js) -->
+<script src="js/js-funtion-form/Guide_Form.js"></script>
 <script>
     $(document).ready(function() {
         $("form").on("submit", function(event) {

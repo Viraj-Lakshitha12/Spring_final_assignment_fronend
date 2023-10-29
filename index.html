@@ -5,7 +5,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Next Travel Pvt-Ltd </title>
+  <title>Tourly - Travel agancy</title>
+
+  <!-- - favicon-->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
 
   <!-- 
     - custom css link
@@ -24,6 +27,10 @@
 
 <body id="top">
 
+  <!-- 
+    - #HEADER
+  -->
+
   <header class="header" data-header>
 
     <div class="overlay" data-overlay></div>
@@ -40,7 +47,7 @@
           <div class="wrapper">
             <p class="helpline-title">For Further Inquires :</p>
 
-            <p class="helpline-number">011-255 7480</p>
+            <p class="helpline-number">011 235 6790</p>
           </div>
 
         </a>
@@ -110,10 +117,6 @@
             </li>
 
             <li>
-              <a href="#" class="navbar-link" data-nav-link>about us</a>
-            </li>
-
-            <li>
               <a href="#destination" class="navbar-link" data-nav-link>destination</a>
             </li>
 
@@ -133,7 +136,7 @@
 
         </nav>
 
-        <button class="btn btn-primary btnRegister">Register</button>
+        <button class="btn btn-primary">Register Now</button>
 
       </div>
     </div>
@@ -154,7 +157,7 @@
       <section class="hero" id="home">
         <div class="container">
 
-          <h2 class="h1 hero-title">Journey to explore Sri lanka</h2>
+          <h2 id="title tag" class="h1 hero-title">Journey to explore Sri-lanka</h2>
 
           <p class="hero-text">
             Ac mi duis mollis. Sapiente? Scelerisque quae, penatibus? Suscipit class corporis nostra rem quos
@@ -163,13 +166,66 @@
           </p>
 
           <div class="btn-group">
-            <button class="btn btn-primary" id="btnLogIn">Login</button>
-            <button class="btn btn-secondary btnRegister">Register</button>
+            <button class="btn btn-primary">Learn more</button>
+
+            <button class="btn btn-secondary">Book now</button>
           </div>
 
         </div>
       </section>
 
+
+
+
+
+      <!-- 
+        - #TOUR SEARCH
+      -->
+
+      <section class="tour-search">
+        <div class="container">
+
+          <form action="" class="tour-search-form">
+
+            <div class="input-wrapper">
+              <label for="destination" class="input-label">Search Destination*</label>
+
+              <input type="text" name="destination" id="destination" required placeholder="Enter Destination"
+                class="input-field">
+            </div>
+
+            <div class="input-wrapper">
+              <label for="people" class="input-label">Pax Number*</label>
+
+              <input type="number" name="people" id="people" required placeholder="No.of People" class="input-field">
+            </div>
+
+            <div class="input-wrapper">
+              <label for="checkin" class="input-label">Checkin Date**</label>
+
+              <input type="date" name="checkin" id="checkin" required class="input-field">
+            </div>
+
+            <div class="input-wrapper">
+              <label for="checkout" class="input-label">Checkout Date*</label>
+
+              <input type="date" name="checkout" id="checkout" required class="input-field">
+            </div>
+
+            <button type="submit" class="btn btn-secondary">Inquire now</button>
+
+          </form>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #POPULAR
+      -->
 
       <section class="popular" id="destination">
         <div class="container">
@@ -179,18 +235,22 @@
           <h2 class="h2 section-title">Popular destination</h2>
 
           <p class="section-text">
-            Certainly, I can help you create a short description for popular travel destinations in Sri Lanka.
-            Sri Lanka is a beautiful country known for its stunning landscapes, rich culture, and vibrant history.
+            Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium.
+            Sit ornare
+            mollitia tenetur, aptent.
           </p>
 
           <ul class="popular-list">
 
             <li>
               <div class="popular-card">
+
                 <figure class="card-img">
-                  <img src="./assets/images/istockphoto-1051597002-170667a.webp" alt="Capital Colombo" loading="lazy">
+                  <img src="./assets/images/popular-1.jpg" alt="San miguel, italy" loading="lazy">
                 </figure>
+
                 <div class="card-content">
+
                   <div class="card-rating">
                     <ion-icon name="star"></ion-icon>
                     <ion-icon name="star"></ion-icon>
@@ -198,25 +258,33 @@
                     <ion-icon name="star"></ion-icon>
                     <ion-icon name="star"></ion-icon>
                   </div>
+
                   <p class="card-subtitle">
-                    <a href="#">Capital Colombo</a>
+                    <a href="#">Italy</a>
                   </p>
+
                   <h3 class="h3 card-title">
-                    <a href="#">Colombo: Vibrant Capital</a>
+                    <a href="#">San miguel</a>
                   </h3>
+
                   <p class="card-text">
-                    Discover Colombo, Sri Lanka's dynamic capital city.
+                    Fusce hic augue velit wisi ips quibusdam pariatur, iusto.
                   </p>
+
                 </div>
+
               </div>
             </li>
 
             <li>
               <div class="popular-card">
+
                 <figure class="card-img">
-                  <img src="./assets/images/sigiriya-459197_1280.jpg" alt="Sigiriya, Sri Lanka" loading="lazy">
+                  <img src="./assets/images/popular-2.jpg" alt="Burj khalifa, dubai" loading="lazy">
                 </figure>
+
                 <div class="card-content">
+
                   <div class="card-rating">
                     <ion-icon name="star"></ion-icon>
                     <ion-icon name="star"></ion-icon>
@@ -224,25 +292,29 @@
                     <ion-icon name="star"></ion-icon>
                     <ion-icon name="star"></ion-icon>
                   </div>
+
                   <p class="card-subtitle">
-                    <a href="#">Sigiriya and Dambulla</a>
+                    <a href="#">Dubai</a>
                   </p>
+
                   <h3 class="h3 card-title">
-                    <a href="#">Sigiriya: Iconic Marvel</a>
+                    <a href="#">Burj khalifa</a>
                   </h3>
+
                   <p class="card-text">
-                    Discover Sigiriya's breathtaking beauty and history.
+                    Fusce hic augue velit wisi ips quibusdam pariatur, iusto.
                   </p>
+
                 </div>
+
               </div>
             </li>
-
 
             <li>
               <div class="popular-card">
 
                 <figure class="card-img">
-                  <img src="./assets/images/buddha-statue-wat-mahathat-temple-precinct-sukhothai-historical-park.jpg" alt="Anuradhapura and Polonnaruwa" loading="lazy">
+                  <img src="./assets/images/popular-3.jpg" alt="Kyoto temple, japan" loading="lazy">
                 </figure>
 
                 <div class="card-content">
@@ -254,15 +326,19 @@
                     <ion-icon name="star"></ion-icon>
                     <ion-icon name="star"></ion-icon>
                   </div>
+
                   <p class="card-subtitle">
-                    <a href="#">Anuradhapura and Polonnaruwa</a>
+                    <a href="#">Japan</a>
                   </p>
+
                   <h3 class="h3 card-title">
-                    <a href="#">Ancient Sri Lankan Capitals</a>
+                    <a href="#">Kyoto temple</a>
                   </h3>
+
                   <p class="card-text">
-                    Explore the historic cities of Anuradhapura and Polonnaruwa, rich in culture and heritage.
+                    Fusce hic augue velit wisi ips quibusdam pariatur, iusto.
                   </p>
+
                 </div>
 
               </div>
@@ -543,8 +619,9 @@
           <h2 class="h2 section-title">Photo's From Travellers</h2>
 
           <p class="section-text">
-            "Explore the world through the lens of fellow travelers.
-            Immerse yourself in captivating moments captured in photos, each telling a unique story of adventure and discovery."
+            Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium.
+            Sit ornare
+            mollitia tenetur, aptent.
           </p>
 
           <ul class="gallery-list">
@@ -589,7 +666,7 @@
 
 
       <!-- 
-        - CONTACTS
+        - #CTA
       -->
 
       <section class="cta" id="contact">
@@ -601,8 +678,9 @@
             <h2 class="h2 section-title">Ready For Unforgatable Travel. Remember Us!</h2>
 
             <p class="section-text">
-              "Ready for unforgettable travel? Contact us today!"
-              This revised version conveys the same message in a concise and engaging way, encouraging visitors to get in touch for their travel needs.
+              Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque
+              laudantium. Sit ornare
+              mollitia tenetur, aptent.
             </p>
           </div>
 
@@ -654,19 +732,19 @@
             <li class="contact-item">
               <ion-icon name="call-outline"></ion-icon>
 
-              <a href="tel:+01123456790" class="contact-link">011-255 7480</a>
+              <a href="tel:+01123456790" class="contact-link">+01 (123) 4567 90</a>
             </li>
 
             <li class="contact-item">
               <ion-icon name="mail-outline"></ion-icon>
 
-              <a href="mailto:viraj.lakshitha.22222@gmail.com" class="contact-link">Next Travel Pvt-Ltd.com</a>
+              <a href="mailto:info.tourly.com" class="contact-link">info.tourly.com</a>
             </li>
 
             <li class="contact-item">
               <ion-icon name="location-outline"></ion-icon>
 
-              <address>3146 PANADURA , SRILANKA</address>
+              <address>3146 Koontz, California</address>
             </li>
 
           </ul>
@@ -694,7 +772,7 @@
       <div class="container">
 
         <p class="copyright">
-          &copy; 2023 <a href=""></a> All rights reserved
+          &copy; 2022 <a href="">codewithsadee</a>. All rights reserved
         </p>
 
         <ul class="footer-bottom-list">
@@ -733,7 +811,6 @@
 
 
 
-  <script src="JQuery/jquery-3.6.1.min.js"></script>
 
   <!-- 
     - custom js link
@@ -745,24 +822,6 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-
-  <script>
-    $(document).ready(function() {
-      // Attach a click event handler to the "Login" button
-      $("#btnLogIn").click(function() {
-        // Redirect to your login page (replace 'login.html' with the actual login page URL)
-        window.location.href = 'login.html';
-      });
-      $(".btnRegister").click(function() {
-        // Redirect to your login page (replace 'login.html' with the actual login page URL)
-        window.location.href = 'UsersRegisterForm.html';
-      });
-
-    });
-
-
-  </script>
 
 </body>
 
