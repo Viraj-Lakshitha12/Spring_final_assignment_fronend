@@ -1,6 +1,101 @@
 $(document).ready(function () {
+    function validateField($field, pattern) {
+        var fieldValue = $field.val().trim();
+        if (pattern.test(fieldValue)) {
+            $field.css("border", "3px solid green");
+            setTimeout(function () {
+                $field.css("border", "3px solid #ccc");
+            }, 4000);
+            return true;
+        } else {
+            $field.css("border", "3px solid red");
+            return false;
+        }
+    }
+
+    function validateSelect($select) {
+        if ($select.val() === "") {
+            $select.css("border", "3px solid red");
+            setTimeout(function () {
+                $select.css("border", "3px solid #ccc");
+            }, 4000);
+            return false;
+        } else {
+            $select.css("border", "3px solid green");
+            setTimeout(function () {
+                $select.css("border", "3px solid #ccc");
+            }, 4000);
+            return true;
+        }
+    }
+
+    // Function to validate an image input and reset border to normal
+    function validateImageInput($input) {
+        if ($input[0].files.length > 0) {
+            $input.css("border", "3px solid green"); // Green border for selected image
+            setTimeout(function () {
+                $input.css("border", "3px solid #ccc"); // Reset the border to normal after 4 seconds
+            }, 4000);
+            return true;
+        } else {
+            $input.css("border", "3px solid red"); // Red border for empty image
+            return false;
+        }
+    }
+
+    // Add event listeners for input fields
+    $("#Vehicle_brand").on('input', function () {
+        validateField($(this), /^[a-zA-Z0-9]{1,6}$/);
+    });
+
+    $("#Fuel_usage").on('input', function () {
+        validateField($(this), /^\d{1,3}$/);
+    });
+
+    $("#Seat_Capacity").on('input', function () {
+        validateField($(this), /^\d{1,3}$/);
+    });
+
+    $("#Driver_Name").on('input', function () {
+        validateField($(this), /^[a-zA-Z]{3,10}$/);
+    });
+
+    $("#contact_No").on('input', function () {
+        validateField($(this), /^\d{10}$/);
+    });
+    $("#User_remarks").on('input', function () {
+        validateField($(this), /^[a-zA-Z]{3,200}$/);
+    });
+
     $("#btn_Vehicle_Submit").click(function (event) {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
+
+        var valid = true;
+        valid = validateField($("#Vehicle_brand"), /^[a-zA-Z0-9]{1,6}$/) && valid;
+        valid = validateField($("#Fuel_usage"), /^\d{1,3}$/) && valid;
+        valid = validateField($("#Seat_Capacity"), /^\d{1,3}$/) && valid;
+        valid = validateField($("#Driver_Name"), /^[a-zA-Z]{3,10}$/) && valid;
+        valid = validateField($("#contact_No"), /^\d{10}$/) && valid;
+        valid = validateField($("#User_remarks"), /^[a-zA-Z]{3,200}$/) && valid;
+
+        // Validate the select elements
+        valid = validateSelect($("#Category")) && valid;
+        valid = validateSelect($("#Fuel_type")) && valid;
+        valid = validateSelect($("#Hybrid_or_Non-Hybrid")) && valid;
+        valid = validateSelect($("#Vehicle_type")) && valid;
+        valid = validateSelect($("#Transmission_type")) && valid;
+
+        // Check image inputs
+        var imageInputs = $("#front_view, #Rear_View, #Side_view, #Font_Interior, #Rear_Interior, #license_Font_Image, #license_Rear_Image");
+        imageInputs.each(function () {
+            if (!validateImageInput($(this))) {
+                valid = false;
+            }
+        });
+
+        if (!valid) {
+            return; // Don't submit the form if validation fails
+        }
 
         var vehicleDTO = {
             vehicleId: $("#Vehicle_Id").val(),
@@ -36,16 +131,20 @@ $(document).ready(function () {
             processData: false,
             success: function (response) {
                 console.log("Data sent successfully. Server response: " + JSON.stringify(response));
-                loadData();
+                // You can call a function here to load data or display a success message
                 alert("Data saved successfully");
+                loadData();
             },
             error: function (error) {
                 console.error("Error sending data: " + JSON.stringify(error));
             }
         });
-
     });
 });
+
+
+
+
 $(document).ready(function () {
     // Add an event listener to the form submit button
     $('#btn_Vehicle_Submit').on('click', function(event) {
