@@ -18,7 +18,7 @@ $("#btn_signIn").click(function () {
 
                 if (response === "Login success") {
                     alert("Login success");
-                    window.location.href = 'indexAdmin.html';
+                    window.location.href = 'UserDashBoard.html';
                 }
             }
         })
