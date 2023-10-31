@@ -242,6 +242,12 @@ $(document).ready(function () {
     $("#updateData").click(function () {
         var formData = new FormData();
         // Extract form values
+
+        var isValid = validateUpdateForm();
+        if (!isValid) {
+            return;
+        }
+
         var vehicleId = $("#editVehicle_Id").val();
         var vehicleBrand=$("#editVehicle_brand").val();
         var category = $("#editCategory option:selected").text();
@@ -360,6 +366,13 @@ $(document).ready(function () {
         $("#vehicleModal").modal('hide');
     });
 });
+
+
+
+
+$("#mainDashboard").click(function () {
+    alert("ok");
+})
 
 
 // ----------------------------------------------- delete vehicle---------------------------------------------------
