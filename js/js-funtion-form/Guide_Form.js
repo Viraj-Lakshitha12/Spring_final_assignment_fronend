@@ -30,6 +30,7 @@ $(document).ready(function () {
                 // Handle the response from the backend
                 console.log("Data sent successfully. Server response: " + JSON.stringify(response));
                 alert("Data save successfully.");
+                loadData();
             },
             error: function (error) {
                 console.error("Error sending data: " + JSON.stringify(error));
@@ -56,17 +57,13 @@ $(document).ready(function () {
                         "<td>" + guide.id + "</td>" +
                         "<td>" + guide.guideName + "</td>" +
                         "<td>" + guide.guideAddress + "</td>" +
-                        "<td>" + guide.guideAge + "</td>" +
-                        "<td>" + guide.gender + "</td>" +
                         "<td>" + guide.contactNumber + "</td>" +
-                        "<td>" + guide.manDayValue + "</td>" +
                         "<td><img src='data:image/png;base64," + guide.guideImage + "' width='100' height='100' alt='12'></td>" +
                         "<td><img src='data:image/png;base64," + guide.nicFrontImage + "' width='100' height='100' alt='12'></td>" +
                         "<td><img src='data:image/png;base64," + guide.nicRearImage + "' width='100' height='100' alt='12' ></td>" +
                         "<td><img src='data:image/png;base64," + guide.guideIdFrontImage + "' width='100' height='100' alt=\"12\"></td>" +
                         "<td><img src='data:image/png;base64," + guide.guideIdRearImage + "' width='100' height='100' alt='12'></td>" +
                         "<td>" + guide.experience + "</td>" +
-                        "<td>" + guide.userRemarks + "</td>" +
                         "<td>" +
                         "<button class='btn btn-info btn-sm view-button' data-id='" + guide.id + "'>View</button>" +
                         "</td>"
@@ -133,7 +130,6 @@ $(document).ready(function () {
                 $("#editManDayValue").val(guide.manDayValue);
                 $("#editGuide_experience").val(guide.experience);
                 $("#editUser_remarks").val(guide.userRemarks);
-
                 // Open the modal
                 $('#editGuideModal').modal('show');
             },
@@ -164,10 +160,10 @@ $(document).ready(function () {
         jsonData.gender = $("#editGender").val();
         jsonData.contactNumber = $("#editContactNumber").val();
         jsonData.manDayValue = $("#editManDayValue").val();
-        jsonData.guideExperience = $("#editGuide_experience").val();
+        jsonData.experience = $("#editGuide_experience").val();
         jsonData.userRemarks = $("#editUser_remarks").val();
 
-        console.log(jsonData.guideExperience);
+        console.log(jsonData.experience);
 
         // Send the images one by one
         sendImage("editGuide_image", "guideImage", originalImages.guideImage, function () {
@@ -245,7 +241,7 @@ $("#deleteData").click(function () {
         success: function (response) {
             alert("Delete Success");
             console.log("Data deleted successfully. Server response: " + JSON.stringify(response));
-            $("#vehicleModal").modal('hide');
+            $("#editGuideModal").modal('hide');
         },
         error: function (error) {
             console.error("Error deleting data: " + JSON.stringify(error));
@@ -254,3 +250,6 @@ $("#deleteData").click(function () {
 });
 
 
+$("#btnCloseModel").click(function () {
+    $("#editGuideModal").modal('hide');
+});
