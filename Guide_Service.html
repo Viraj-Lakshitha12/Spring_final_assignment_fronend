@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Guide Service</title>
 
     <link href="css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -27,10 +27,10 @@
             </div>
             <div class="card-body">
                 <form>
-                    <div class="form-group">
-                        <label for="Guide_Id" class="form-control-label">Guide ID :</label>
-                        <input type="text" id="Guide_Id" placeholder="123" class="form-control">
-                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="Guide_Id" class="form-control-label">Guide ID :</label>-->
+<!--                        <input type="text" id="Guide_Id" placeholder="123" class="form-control">-->
+<!--                    </div>-->
                     <div class="form-group">
                         <label for="Guide_Name" class="form-control-label">Guide Name :</label>
                         <input type="text" id="Guide_Name" placeholder="kamal" class="form-control">
@@ -61,12 +61,13 @@
                     <div class="form-group">
                         <label for="Man-day-value" class="form-control-label">Man Day Value :</label>
                         <input type="text" id="Man-day-value" placeholder="10" class="form-control">
-                    </div>
+                    </div><br>
 
                     <div class="form-group">
-                        <label for="Guide_image">Guide image :</label>
+                        <label for="Guide_image">Guide image :</label><br>
                         <input type="file" id="Guide_image" name="image" accept="image/*">
                     </div>
+
 
                 </form>
             </div>
@@ -81,17 +82,14 @@
             </div>
             <div class="card-body">
                 <form>
-
                     <div class="form-group">
                         <label for="Guide_Nic_font">NIC scanned image (Front view) : </label>
                         <input type="file" id="Guide_Nic_font" name="Guide_Nic_font" accept="image/*">
                     </div>
-
                     <div class="form-group">
                         <label for="Guide_Nic_Rear">NIC scanned image (Rear view) :</label>
                         <input type="file" id="Guide_Nic_Rear" name="Guide_Nic_Rear" accept="image/*">
                     </div>
-
 
                     <div class="form-group">
                         <label for="Guide_ID_font">Guide ID scanned image (Front view) :</label>
@@ -129,17 +127,13 @@
         <th>ID</th>
         <th>Name</th>
         <th>Address</th>
-        <th>Age</th>
-        <th>Gender</th>
         <th>Contact Number</th>
-        <th>Man-Day Value</th>
         <th>Guide Image</th>
         <th>NIC Front Image</th>
         <th>NIC Rear Image</th>
         <th>Guide ID Front Image</th>
         <th>Guide ID Rear Image</th>
         <th>Experience</th>
-        <th>User Remarks</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -242,7 +236,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="saveGuideChanges">Save Changes</button>
+                <button type="button" class="btn btn-primary" id="saveGuideChanges">Update</button>
                 <button type="button" class="btn btn-danger" id="deleteData">Delete</button>
                 <button type="button" class="btn btn-secondary" id="btnCloseModel" data-dismiss="modal">Close</button>
             </div>

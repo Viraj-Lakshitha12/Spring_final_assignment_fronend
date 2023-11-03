@@ -42,11 +42,12 @@ $(document).ready(function () {
             return false;
         }
     }
+    //
+    // // Add event listeners for input fields
+    // $("#Vehicle_brand").on('input', function () {
+    //     validateField($(this), /^[a-zA-Z0-9 ]{1,15}$/);
+    // });
 
-    // Add event listeners for input fields
-    $("#Vehicle_brand").on('input', function () {
-        validateField($(this), /^[a-zA-Z0-9]{1,6}$/);
-    });
 
     $("#Fuel_usage").on('input', function () {
         validateField($(this), /^\d{1,3}$/);
@@ -71,7 +72,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         var valid = true;
-        valid = validateField($("#Vehicle_brand"), /^[a-zA-Z0-9]{1,6}$/) && valid;
+        // valid = validateField($("#Vehicle_brand"), /^[a-zA-Z0-9]{1,15}$/) && valid;
         valid = validateField($("#Fuel_usage"), /^\d{1,3}$/) && valid;
         valid = validateField($("#Seat_Capacity"), /^\d{1,3}$/) && valid;
         valid = validateField($("#Driver_Name"), /^[a-zA-Z]{3,10}$/) && valid;
@@ -109,6 +110,9 @@ $(document).ready(function () {
             transmissionType: $("#Transmission_type").val(),
             driverName: $("#Driver_Name").val(),
             driverContactNo: $("#contact_No").val(),
+            vehicle_qty: $("#Vehicle_qty").val(),
+            vehicleFee: $("#VehicleFee").val(),
+            fee_For_1km: $("#fee_For_1km").val(),
             remarks: $("#User_remarks").val()
         };
 
@@ -176,14 +180,9 @@ function loadData() {
                     "<td>" + vehicle.vehicleId + "</td>" +
                     "<td>" + vehicle.vehicleBrand + "</td>" +
                     "<td>" + vehicle.category + "</td>" +
-                    "<td>" + vehicle.fuelType + "</td>" +
-                    "<td>" + vehicle.hybridOrNonHybrid + "</td>" +
-                    "<td>" + vehicle.fuelUsage + "</td>" +
-                    "<td>" + vehicle.seatCapacity + "</td>" +
-                    "<td>" + vehicle.vehicleType + "</td>" +
-                    "<td>" + vehicle.transmissionType + "</td>" +
                     "<td>" + vehicle.driverName + "</td>" +
                     "<td>" + vehicle.driverContactNo + "</td>" +
+                    "<td>" + vehicle.vehicleFee + "</td>" +
                     "<td>" + vehicle.remarks + "</td>" +
                     "<td><img src='data:image/png;base64," + vehicle.frontViewImage + "' width='100' height='100' alt='Front View'></td>" +
                     "<td><img src='data:image/png;base64," + vehicle.rearViewImage + "' width='100' height='100' alt='Rear View'></td>" +
@@ -243,11 +242,6 @@ $(document).ready(function () {
         var formData = new FormData();
         // Extract form values
 
-        var isValid = validateUpdateForm();
-        if (!isValid) {
-            return;
-        }
-
         var vehicleId = $("#editVehicle_Id").val();
         var vehicleBrand=$("#editVehicle_brand").val();
         var category = $("#editCategory option:selected").text();
@@ -257,9 +251,12 @@ $(document).ready(function () {
         var seatCapacity = $("#editSeat_Capacity").val();
         var vehicleType = $("#editVehicle_type option:selected").text();
         var transmissionType = $("#editTransmission_type option:selected").text();
+        var vehicle_qty = $("#editVehicle_qty").val();
         var driverName = $("#editDriver_Name").val();
         var driverContactNo = $("#editContact_No").val();
+        var vehicleFee = $("#editVehicleFee").val();
         var remarks = $("#editUser_remarks").val();
+        var fee_For_1km = $("#editFee_For_1km").val();
 
         var editFront_view =document.getElementById("editFront_view");
         var editRear_View =document.getElementById("editRear_View");
@@ -281,7 +278,10 @@ $(document).ready(function () {
             transmissionType:transmissionType,
             driverName:driverName,
             driverContactNo:driverContactNo,
-            remarks:remarks
+            vehicleFee:vehicleFee,
+            vehicle_qty:vehicle_qty,
+            remarks:remarks,
+            fee_For_1km:fee_For_1km
         }
 
         formData.append("vehicleDTO", new Blob([JSON.stringify(vehicleDTO)], { type: "application/json" }));
@@ -348,6 +348,8 @@ $(document).ready(function () {
         $("#editDriver_Name").val(vehicle.data.driverName);
         $("#editContact_No").val(vehicle.data.driverContactNo);
         $("#editUser_remarks").val(vehicle.data.remarks);
+        $("#editVehicle_qty").val(vehicle.data.vehicle_qty);
+        $("#editVehicleFee").val(vehicle.data.vehicleFee);
 
         var vehicleOriginalImagesObject ={
             frontViewImage:vehicle.frontViewImage,

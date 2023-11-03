@@ -1,7 +1,7 @@
 // select hotel plan
 function updateHotelCategories() {
-    const hotelPlan = $("#EditHotelPlan").val();
-    const hotelCategorySelect = $(".hotel-category"); // Select by class
+    const hotelPlan = $("#hotelPlan").val(); // Changed to "hotelPlan"
+    const hotelCategorySelect = $("#hotelCategory"); // Select by ID
 
     hotelCategorySelect.html('<option value="">Select a hotel category</option>');
 
@@ -18,6 +18,7 @@ function updateHotelCategories() {
         hotelCategorySelect.append('<option value="5-star">5 Star</option>');
     }
 }
+
 
 // save the data send back end
 
@@ -49,6 +50,7 @@ $("#btn_Hotel_Submit").click(function () {
         contentType: "application/json",
         success: function (response) {
             populateHotelData();
+            alert("Data save successfully");
             console.log("Data sent to the backend successfully:", response);
         },
         error: function (error) {
@@ -77,11 +79,8 @@ function populateHotelData() {
                 row.append($("<td>").text(hotel.hotelLocation));
                 row.append($("<td>").text(hotel.hotelEmail));
                 row.append($("<td>").text(hotel.contactNumber1));
-                row.append($("<td>").text(hotel.contactNumber2));
                 row.append($("<td>").text(hotel.petsAllowed ? "Yes" : "No"));
                 row.append($("<td>").text(hotel.hotelFee));
-                row.append($("<td>").text(hotel.cancellationCriteria));
-                row.append($("<td>").text(hotel.userRemarks));
 
                 // Add a "View" button in the last column
                 var viewButton = $("<button>").text("View");
@@ -104,10 +103,12 @@ function populateHotelData() {
 
 // Call the function to populate data on page load
 populateHotelData();
-// Event handler for "View" button clicks
+
 
 // Event handler for "View" button clicks
+
 $(document).on("click", ".view-button", function () {
+
     var hotel = $(this).data("hotel");
 
     // Set the hotel data in the modal elements
@@ -116,13 +117,7 @@ $(document).on("click", ".view-button", function () {
     $("#EditHotel_Name").val(hotel.hotelName);
     $("#EditHotelPlan").val(hotel.hotelPlan);
 
-    // Check if hotelCategory is not null in the database
-    if (hotel.hotelCategory !== null) {
-        $("#EditHotelCategory").val(hotel.hotelCategory);
-    } else {
-        // If hotelCategory is null, clear the selection
-        $("#EditHotelCategory").val("Abc");
-    }
+    $("#EditHotelCategory").val(hotel.hotelCategory);
 
     // Set the rest of the fields as you did before
     $("#EditHotel_Location").val(hotel.hotelLocation);
@@ -134,9 +129,11 @@ $(document).on("click", ".view-button", function () {
     $("#EditCancellation_Criteria").val(hotel.cancellationCriteria);
     $("#EditUser_remarks").val(hotel.userRemarks);
 
+
     // Show the modal
     $("#editHotelModal").modal("show");
 });
+
 
 // Event handler for the "Update" button in the modal
 $("#updateHotelBtn").click(function () {
@@ -145,7 +142,7 @@ $("#updateHotelBtn").click(function () {
         hotelId: $("#editHotel_Id").val(),
         hotelName: $("#EditHotel_Name").val(),
         hotelPlan: $("#EditHotelPlan").val(),
-        hotelCategory: $("#EditHotelCategory").val(),
+        hotelCategory: $("#EditHotelCategory option:selected").text(),
         hotelLocation: $("#EditHotel_Location").val(),
         hotelEmail: $("#EditHotel_Email").val(),
         contactNumber1: $("#EditContact_number1").val(),
@@ -180,10 +177,32 @@ $("#editHotelModal").on("hidden.bs.modal", function () {
     $("#editHotelForm")[0].reset();
 });
 
+$("#btnClose").click(function () {
+    $("#editHotelModal").modal('hide');
+});
 
+// delete hotel
 
+$("#DeleteHotelBtn").click(function () {
+    // Show a confirmation dialog
+    var confirmation = confirm("Are you sure you want to delete this hotel?");
 
-
-
+    if (confirmation) {
+        var hotelId = $("#editHotel_Id").val();
+        $.ajax({
+            type: "DELETE",
+            url: "http://localhost:8085/api/v1/hotel/deleteHotel/" + hotelId,
+            success: function (response) {
+                console.log("Delete successfully:", response);
+                alert("Delete successfully");
+                populateHotelData();
+                $("#editHotelModal").modal("hide");
+            },
+            error: function (error) {
+                console.error("Error updating data:", error);
+            }
+        });
+    }
+});
 
 

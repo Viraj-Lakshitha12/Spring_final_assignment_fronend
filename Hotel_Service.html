@@ -22,10 +22,10 @@
       </div>
       <div class="card-body">
         <form>
-          <div class="form-group">
-            <label for="hotel_Id" class="form-control-label">Hotel ID:</label>
-            <input type="text" id="hotel_Id" placeholder="123" class="form-control">
-          </div>
+<!--          <div class="form-group">-->
+<!--            <label for="hotel_Id" class="form-control-label">Hotel ID:</label>-->
+<!--            <input type="text" id="hotel_Id" placeholder="123" class="form-control">-->
+<!--          </div>-->
 
           <div class="form-group">
             <label for="hotel_Name" class="form-control-label">Hotel Name :</label>
@@ -128,11 +128,8 @@
     <th>Hotel Location</th>
     <th>Hotel Email</th>
     <th>Contact Number 1</th>
-    <th>Contact Number 2</th>
     <th>Pets Allowed</th>
     <th>Hotel Fee</th>
-    <th>Cancellation Criteria</th>
-    <th>User Remarks</th>
     <th>Action</th>
   </tr>
   </thead>
@@ -178,9 +175,14 @@
           </select><br><br>
 
           <label for="EditHotelCategory">Select Hotel Category:</label>
-          <select class="hotel-category" id="EditHotelCategory">
-            <option value="">Select a hotel category</option>
+          <select id="EditHotelCategory">
+            <option value="">2 Star </option>
+            <option value="">3 Star </option>
+            <option value="">4 Star </option>
+            <option value="">5 Star </option>
+
           </select><br><br>
+
 
           <div class="form-group">
             <label for="EditHotel_Location" class="form-control-label">Hotel Location:</label>
@@ -228,8 +230,9 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="updateHotelBtn">Update</button>
+        <button type="button" class="btn btn-primary" id="DeleteHotelBtn">Delete</button>
+        <button type="button" class="btn btn-secondary" id="btnClose" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

@@ -84,7 +84,10 @@
             <label for="Rear_Interior">Images of the vehicle (Rear Interior view)</label>
             <input type="file" id="Rear_Interior" name="image" accept="image/*">
           </div>
-
+          <div class="form-group">
+            <label for="Vehicle_qty" class="form-control-label">Vehicle Qty :</label>
+            <input type="text" id="Vehicle_qty" placeholder="1234" class="form-control">
+          </div>
         </form>
       </div>
     </div>
@@ -141,6 +144,15 @@
             <input type="file" id="license_Rear_Image" name="image" accept="image/*">
           </div>
 
+          <div class="form-group">
+          <label for="fee_For_1km" class="form-control-label">Fee For 1km (LKR) :</label>
+          <input type="text" id="fee_For_1km" placeholder="1234" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="VehicleFee" class="form-control-label">Vehicle Fee for Day (LKR) (100 km/day) :</label>
+            <input type="text" id="VehicleFee" placeholder="1234" class="form-control">
+          </div>
 
           <div class="form-group">
             <label for="User_remarks" class="form-control-label">Remarks (any special needs, illnesses, etc.):</label>
@@ -163,20 +175,15 @@
     <th>ID</th>
     <th>Brand</th>
     <th>Category</th>
-    <th>Fuel Type</th>
-    <th>Hybrid or Not</th>
-    <th>Fuel Usage (km/l)</th>
-    <th>Seat Capacity</th>
-    <th>Vehicle Type</th>
-    <th>Transmission Type</th>
     <th>Driver Name</th>
     <th>Driver Contact</th>
+    <th>Price</th>
     <th>Remarks</th>
     <th>Front View</th>
     <th>Rear View</th>
     <th>Side View</th>
-    <th>Front Interior View</th>
-    <th>Rear Interior View</th>
+    <th>Front Interior</th>
+    <th>Rear Interior</th>
     <th>License Front</th>
     <th>License Rear</th>
     <th>View</th>
@@ -307,6 +314,21 @@
           <label for="editLicense_Rear_Image">Driver's license Scanned Image (Rear side)</label>
           <input type="file" id="editLicense_Rear_Image" name="image" accept="image/*">
         </div>
+        <div class="form-group">
+          <label for="editVehicle_qty" class="form-control-label">Vehicle Qty :</label>
+          <input type="text" id="editVehicle_qty" placeholder="1234" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="editFee_For_1km" class="form-control-label">Fee For 1km (LKR) :</label>
+          <input type="text" id="editFee_For_1km" placeholder="1234" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="editVehicleFee" class="form-control-label">Vehicle Fee for Day (LKR) (100 km/day) :</label>
+          <input type="text" id="editVehicleFee" placeholder="1234" class="form-control">
+        </div>
+
+
         <div class="form-group">
           <label for="editUser_remarks" class="form-control-label">Remarks (any special needs, illnesses, etc.):</label>
           <textarea id="editUser_remarks" name="remarks" rows="4" cols="50" placeholder="Enter your remarks here" class="form-control"></textarea>
